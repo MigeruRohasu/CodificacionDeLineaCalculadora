@@ -12,6 +12,9 @@ import java.util.*;
  */
 public class CodificacionRLE {
 
+
+//hola perro
+
     ArrayList<ArrayList<Integer>> matriz = new ArrayList<ArrayList<Integer>>();
     private String MostrarMatriz = "";
     private String codificacionVertical= "";
