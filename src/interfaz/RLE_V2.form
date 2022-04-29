@@ -85,7 +85,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f7" green="ff" red="38" type="rgb"/>
+          <Color blue="33" green="66" red="ff" type="rgb"/>
         </Property>
       </Properties>
 
@@ -211,7 +211,7 @@
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f6" green="87" red="f" type="rgb"/>
+          <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
       </Properties>
 
@@ -228,23 +228,17 @@
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="365" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Horizontal" max="32767" attributes="0"/>
-                              <Component id="Zigzag" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Vertical" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                              <Component id="bitBandera" max="32767" attributes="0"/>
+                              <Component id="ByteAnticipado" alignment="0" max="32767" attributes="0"/>
+                              <Component id="byteBandera" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="389" max="-2" attributes="0"/>
-                                  <Component id="calcular" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="reco" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
-                              <Component id="tasa" min="-2" pref="356" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="-2" pref="389" max="-2" attributes="0"/>
+                          <Component id="calcular" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="clean" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -270,30 +264,21 @@
                                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="Horizontal" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bitBandera" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="Vertical" min="-2" max="-2" attributes="0"/>
+                                  <Component id="byteBandera" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="Zigzag" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ByteAnticipado" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="codi" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="calcular" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="clean" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="tasa" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="reco" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="calcular" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clean" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -317,43 +302,33 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cleanActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="Horizontal">
+        <Component class="javax.swing.JRadioButton" name="bitBandera">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Recorrer Horizontal"/>
+            <Property name="text" type="java.lang.String" value="Bit Bandera"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HorizontalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bitBanderaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="Vertical">
+        <Component class="javax.swing.JRadioButton" name="byteBandera">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Recorrer Vertical"/>
+            <Property name="text" type="java.lang.String" value="Byte Bandera"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerticalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="byteBanderaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="Zigzag">
+        <Component class="javax.swing.JRadioButton" name="ByteAnticipado">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Recorrer Zigzag"/>
+            <Property name="text" type="java.lang.String" value="Byte Anticipado"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ZigzagActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ByteAnticipadoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="codi">
           <Properties>
             <Property name="text" type="java.lang.String" value="Codificacion:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="tasa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Tasa de comprecion de bit: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="reco">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Recomendacion:"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">

@@ -10,7 +10,7 @@ import codificacionfuente.*;
  *
  * @author super
  */
-public class RLE extends javax.swing.JFrame {
+public class RLE_V2 extends javax.swing.JFrame {
 
     int count = 0;
     String matriz = "";
@@ -20,7 +20,7 @@ public class RLE extends javax.swing.JFrame {
     /**
      * Creates new form RLE
      */
-    public RLE() {
+    public RLE_V2() {
         initComponents();
     }
 
@@ -49,12 +49,10 @@ public class RLE extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         calcular = new javax.swing.JButton();
         clean = new javax.swing.JButton();
-        Horizontal = new javax.swing.JRadioButton();
-        Vertical = new javax.swing.JRadioButton();
-        Zigzag = new javax.swing.JRadioButton();
+        bitBandera = new javax.swing.JRadioButton();
+        byteBandera = new javax.swing.JRadioButton();
+        ByteAnticipado = new javax.swing.JRadioButton();
         codi = new javax.swing.JLabel();
-        tasa = new javax.swing.JLabel();
-        reco = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         codi1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
@@ -85,7 +83,7 @@ public class RLE extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(56, 255, 247));
+        jPanel1.setBackground(new java.awt.Color(255, 102, 51));
 
         jLabel2.setText("Ingrese el Tamaño de la matriz:");
 
@@ -178,7 +176,7 @@ public class RLE extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(15, 135, 246));
+        jPanel2.setBackground(new java.awt.Color(255, 102, 102));
 
         calcular.setText("Calcular");
         calcular.addActionListener(new java.awt.event.ActionListener() {
@@ -194,32 +192,28 @@ public class RLE extends javax.swing.JFrame {
             }
         });
 
-        Horizontal.setText("Recorrer Horizontal");
-        Horizontal.addActionListener(new java.awt.event.ActionListener() {
+        bitBandera.setText("Bit Bandera");
+        bitBandera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HorizontalActionPerformed(evt);
+                bitBanderaActionPerformed(evt);
             }
         });
 
-        Vertical.setText("Recorrer Vertical");
-        Vertical.addActionListener(new java.awt.event.ActionListener() {
+        byteBandera.setText("Byte Bandera");
+        byteBandera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VerticalActionPerformed(evt);
+                byteBanderaActionPerformed(evt);
             }
         });
 
-        Zigzag.setText("Recorrer Zigzag");
-        Zigzag.addActionListener(new java.awt.event.ActionListener() {
+        ByteAnticipado.setText("Byte Anticipado");
+        ByteAnticipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZigzagActionPerformed(evt);
+                ByteAnticipadoActionPerformed(evt);
             }
         });
 
         codi.setText("Codificacion:");
-
-        tasa.setText("Tasa de comprecion de bit: ");
-
-        reco.setText("Recomendacion:");
 
         codi1.setColumns(20);
         codi1.setRows(5);
@@ -245,19 +239,15 @@ public class RLE extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Horizontal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Zigzag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Vertical, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(bitBandera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ByteAnticipado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(byteBandera, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(389, 389, 389)
-                                .addComponent(calcular))
-                            .addComponent(reco, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tasa, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(389, 389, 389)
+                        .addComponent(calcular)
                         .addGap(62, 62, 62)
                         .addComponent(clean)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -277,23 +267,17 @@ public class RLE extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Horizontal)
+                                .addComponent(bitBandera)
                                 .addGap(18, 18, 18)
-                                .addComponent(Vertical)
+                                .addComponent(byteBandera)
                                 .addGap(18, 18, 18)
-                                .addComponent(Zigzag))
+                                .addComponent(ByteAnticipado))
                             .addComponent(codi))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(calcular)
-                            .addComponent(clean)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(tasa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(reco)))
+                .addGap(69, 69, 69)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(calcular)
+                    .addComponent(clean))
                 .addContainerGap())
         );
 
@@ -322,7 +306,7 @@ public class RLE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
-        if (Zigzag.isSelected() == false && Horizontal.isSelected() == false && Vertical.isSelected() == false) {
+        if (ByteAnticipado.isSelected() == false && bitBandera.isSelected() == false && byteBandera.isSelected() == false) {
             error.setText("Seleccione un metodo de lectura");
         } else {
             error.setText("");
@@ -331,27 +315,15 @@ public class RLE extends javax.swing.JFrame {
                 a.insertarMatriz(matriz);
                 Mati.setText(a.getMostrarMatriz());
             }
-            a.InniciarV1();
+            a.InniciarV2();
 
-            if (Zigzag.isSelected()) {
-                codi1.setText(a.getMostrarcodificacionZigzag());
-                tasa.setText("Tasa de comprecion de bit: " + a.getTasaDeComprecionZigzag());
-            } else if (Horizontal.isSelected()) {
-                codi1.setText(a.getMostrarcodificacionHorizontal());
-                tasa.setText("Tasa de comprecion de bit: " + a.getTasaDeComprecionHorizontal());
-            } else if (Vertical.isSelected()) {
-                codi1.setText(a.getMostrarcodificacionVertical());
-                tasa.setText("Tasa de comprecion de bit: " + a.getTasaDeComprecionVertical());
+            if (ByteAnticipado.isSelected()) {
+                codi1.setText(a.getMostrarByteAnticipado());
+            } else if (bitBandera.isSelected()) {
+                codi1.setText(a.getMostrarBitBandera());
+            } else if (byteBandera.isSelected()) {
+                codi1.setText(a.getMostrarByteBandera());
             }
-
-            String mayor = "Zigzag";
-            if (Double.valueOf(a.getTasaDeComprecionHorizontal()) > Double.valueOf(a.getTasaDeComprecionZigzag())) {
-                mayor = "Horizontal";
-            }
-            if (Double.valueOf(a.getTasaDeComprecionVertical()) > Double.valueOf(a.getTasaDeComprecionHorizontal())) {
-                mayor = "Vertical";
-            }
-            reco.setText("Recomendacion: " + mayor);
         }
     }//GEN-LAST:event_calcularActionPerformed
 
@@ -409,24 +381,22 @@ public class RLE extends javax.swing.JFrame {
         texto.setText("");
         a.clear();
         codi.setText("Codificacion:");
-        tasa.setText("Tasa de comprecion de bit: ");
-        reco.setText("Recomendacion:");
     }//GEN-LAST:event_cleanActionPerformed
 
-    private void HorizontalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorizontalActionPerformed
-        Vertical.setSelected(false);
-        Zigzag.setSelected(false);
-    }//GEN-LAST:event_HorizontalActionPerformed
+    private void bitBanderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bitBanderaActionPerformed
+        byteBandera.setSelected(false);
+        ByteAnticipado.setSelected(false);
+    }//GEN-LAST:event_bitBanderaActionPerformed
 
-    private void VerticalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerticalActionPerformed
-        Horizontal.setSelected(false);
-        Zigzag.setSelected(false);
-    }//GEN-LAST:event_VerticalActionPerformed
+    private void byteBanderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_byteBanderaActionPerformed
+        bitBandera.setSelected(false);
+        ByteAnticipado.setSelected(false);
+    }//GEN-LAST:event_byteBanderaActionPerformed
 
-    private void ZigzagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZigzagActionPerformed
-        Vertical.setSelected(false);
-        Horizontal.setSelected(false);
-    }//GEN-LAST:event_ZigzagActionPerformed
+    private void ByteAnticipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ByteAnticipadoActionPerformed
+        byteBandera.setSelected(false);
+        bitBandera.setSelected(false);
+    }//GEN-LAST:event_ByteAnticipadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,34 +415,35 @@ public class RLE extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RLE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RLE_V2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RLE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RLE_V2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RLE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RLE_V2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RLE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RLE_V2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RLE().setVisible(true);
+                new RLE_V2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
-    private javax.swing.JRadioButton Horizontal;
+    private javax.swing.JRadioButton ByteAnticipado;
     private javax.swing.JRadioButton Insert;
     private javax.swing.JTextArea Mati;
     private javax.swing.JRadioButton Rand;
     private javax.swing.JTextField Tamaño;
-    private javax.swing.JRadioButton Vertical;
-    private javax.swing.JRadioButton Zigzag;
+    private javax.swing.JRadioButton bitBandera;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton byteBandera;
     private javax.swing.JButton calcular;
     private javax.swing.JButton clean;
     private javax.swing.JLabel codi;
@@ -488,8 +459,6 @@ public class RLE extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel reco;
-    private javax.swing.JLabel tasa;
     private javax.swing.JTextField texto;
     // End of variables declaration//GEN-END:variables
 }

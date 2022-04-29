@@ -12,38 +12,42 @@ import java.util.*;
  */
 public class CodificacionRLE {
 
-
-//hola perro
-
     ArrayList<ArrayList<Integer>> matriz = new ArrayList<ArrayList<Integer>>();
     private String MostrarMatriz = "";
-    private String codificacionVertical= "";
+    private String codificacionVertical = "";
     private String MostrarcodificacionVertical = "";
-    private String tasaDeComprecionVertical= "";
-    private String codificacionHorizontal= "";
+    private String tasaDeComprecionVertical = "";
+    private String codificacionHorizontal = "";
     private String MostrarcodificacionHorizontal = "";
-    private String tasaDeComprecionHorizontal= "";
-    private String codificacionZigzag= "";
+    private String tasaDeComprecionHorizontal = "";
+    private String codificacionZigzag = "";
     private String MostrarcodificacionZigzag = "";
-    private String tasaDeComprecionZigzag= "";
+    private String tasaDeComprecionZigzag = "";
     private String tamañoMatriz = "35x35";
 
-public void clear(){
-    MostrarMatriz = "";
-    MostrarcodificacionHorizontal = "";
-    MostrarcodificacionZigzag = "";
-    MostrarcodificacionVertical = "";
-    codificacionVertical = "";
-    tasaDeComprecionVertical = "";
-    codificacionHorizontal = "";
-    tasaDeComprecionHorizontal = "";
-    codificacionZigzag = "";
-    tasaDeComprecionZigzag = "";
-    tamañoMatriz = "35x35";
-    matriz.clear();
-}
+    private String MostrarBitBandera = "";
+    private String MostrarByteBandera = "";
+    private String MostrarByteAnticipado = "";
 
-    public void Inniciar() {
+    public void clear() {
+        MostrarMatriz = "";
+        MostrarcodificacionHorizontal = "";
+        MostrarcodificacionZigzag = "";
+        MostrarcodificacionVertical = "";
+        codificacionVertical = "";
+        tasaDeComprecionVertical = "";
+        codificacionHorizontal = "";
+        tasaDeComprecionHorizontal = "";
+        codificacionZigzag = "";
+        tasaDeComprecionZigzag = "";
+        tamañoMatriz = "35x35";
+        MostrarBitBandera = "";
+        matriz.clear();
+        MostrarByteBandera = "";
+        MostrarByteAnticipado = "";
+    }
+
+    public void InniciarV1() {
         System.out.println("recorrerVertical \t" + recorrerVertical());
         setCodificacionVertical(codificacion(contarRepeticiones(recorrerVertical()), "v"));
         setTasaDeComprecionVertical(tasaDeComprecion(recorrerVertical(), getCodificacionVertical()));
@@ -57,7 +61,18 @@ public void clear(){
             setCodificacionZigzag(codificacion(contarRepeticiones(recorrerZigzag()), "z"));
             setTasaDeComprecionZigzag(tasaDeComprecion(recorrerZigzag(), getCodificacionZigzag()));
         }
-}
+    }
+
+    public void InniciarV2() {
+        String[] parts = tamañoMatriz.split("x");
+        int filas = Integer.valueOf(parts[0]);
+        if (filas > 2) {
+            System.out.println("recorrerZigzag \t \t" + recorrerZigzag());
+            bitBandera(contarRepeticiones(recorrerZigzag()));
+            byteBandera(contarRepeticiones(recorrerZigzag()));
+            byteAnticipado(contarRepeticiones(recorrerZigzag()));
+        }
+    }
 
     public void insertarMatriz(String fila) {
         String[] parts = tamañoMatriz.split("x");
@@ -65,84 +80,68 @@ public void clear(){
         int columnas = Integer.valueOf(parts[1]);
 
         int count = 0;
+        String[] total2 = fila.split(" ");
         for (int a = 0; a < filas; a++) {
             ArrayList<Integer> n = new ArrayList<Integer>();
             for (int b = 0; b < columnas; b++) {
-//                Random random = new Random();
-//                int value = random.nextInt((max + 1) + min) + min;
-//                n.add(value);
-//                System.out.print((value) + " ");
-                //System.out.println("fila.charAt(count) "+fila);
-                MostrarMatriz=getMostrarMatriz()+"  "+fila.charAt(count);
-                n.add(Integer.valueOf(String.valueOf(fila.charAt(count))));
-                System.out.print(Integer.valueOf(String.valueOf(fila.charAt(count))) + " ");
+                MostrarMatriz = getMostrarMatriz() + total2[count] + "\t";
+                n.add(Integer.valueOf(total2[count]));
+                System.out.print(Integer.valueOf(total2[count]) + " ");
                 count++;
             }
+            MostrarMatriz = getMostrarMatriz() + "\n";
             System.out.println();
-            MostrarMatriz=getMostrarMatriz()+"\n";
             matriz.add(n);
         }
+        System.out.println("matriz " + matriz);
     }
 
     public void crearMatriz() {
         String[] parts = tamañoMatriz.split("x");
         int filas = Integer.valueOf(parts[0]);
         int columnas = Integer.valueOf(parts[1]);
-        int max = 1;
-        int min = 0;
+        int max = 17;
+        int min = 7;
+        Random random = new Random();
 
         System.out.println("Matriz Creada Aleatoria de " + filas + "x" + columnas);
         int total = filas * columnas;
         String total1 = "";
-        String cambio = "0";
-        while (total1.length() - 1 <= total) {
-            Random random = new Random();
-            int rand = random.nextInt((17 + 1) + 7) + 7;
-            if (cambio == "0") {
-                int count = 0;
-                while (count <= rand) {
-                    total1 = total1 + "0";
-                    count++;
-                }
-                cambio = "1";
-            } else {
-                int count = 0;
-                while (count <= rand) {
-                    total1 = total1 + "1";
-                    count++;
-                }
-                cambio = "0";
+        int count1 = 0;
+        while (count1 <= total) {
+            int rand1 = random.nextInt((max + 1) + min) + min;
+            int rand2 = random.nextInt((100 + 1) + 0) + 0;
+            int count = 0;
+            while (count <= rand1) {
+                total1 = total1 + String.valueOf(rand2) + " ";
+                count++;
+                count1++;
             }
         }
 
-        total1 = total1.substring(0, total);
-
         int count = 0;
+        String[] total2 = total1.split(" ");
         for (int a = 0; a < filas; a++) {
             ArrayList<Integer> n = new ArrayList<Integer>();
             for (int b = 0; b < columnas; b++) {
-//                Random random = new Random();
-//                int value = random.nextInt((max + 1) + min) + min;
-//                n.add(value);
-//                System.out.print((value) + " ");
-                MostrarMatriz=getMostrarMatriz()+"  "+total1.charAt(count);
-                n.add(Integer.valueOf(String.valueOf(total1.charAt(count))));
-                System.out.print(Integer.valueOf(String.valueOf(total1.charAt(count))) + " ");
+                MostrarMatriz = getMostrarMatriz() + total2[count] + "\t";
+                n.add(Integer.valueOf(total2[count]));
+                System.out.print(Integer.valueOf(total2[count]) + " ");
                 count++;
             }
-            MostrarMatriz=getMostrarMatriz()+"\n";
+            MostrarMatriz = getMostrarMatriz() + "\n";
             System.out.println();
             matriz.add(n);
         }
+        System.out.println("matriz " + matriz);
     }
 
     private String recorrerHorizontal() {
         String tramaHorizontal = "";
-
         for (int a = 0; a < matriz.size(); a++) {
             ArrayList<Integer> n = new ArrayList<Integer>();
             for (int b = 0; b < matriz.get(0).size(); b++) {
-                tramaHorizontal = tramaHorizontal + String.valueOf(matriz.get(a).get(b));
+                tramaHorizontal = tramaHorizontal + String.valueOf(matriz.get(a).get(b)) + " ";
             }
         }
         return tramaHorizontal;
@@ -153,8 +152,7 @@ public void clear(){
         for (int b = 0; b < matriz.get(0).size(); b++) {
             for (int a = 0; a < matriz.size(); a++) {
                 ArrayList<Integer> n = new ArrayList<Integer>();
-
-                tramaVertical = tramaVertical + String.valueOf(matriz.get(a).get(b));
+                tramaVertical = tramaVertical + String.valueOf(matriz.get(a).get(b)) + " ";
             }
         }
         return tramaVertical;
@@ -164,11 +162,10 @@ public void clear(){
         String tramaZigzag = "";
         int y = 0;
         int x = 0;
-        //System.out.println(matriz.get(y).get(x) +"  ("+x+" "+y+")");
-        tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x));
+        int diagonal = 0;
+        tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x)) + " ";
         while (y != matriz.size() - 1 || x != matriz.get(0).size() - 1) {
-
-            //se mueve 1 vez
+//movimientos hacia la derecha o hacia abajo
             if (y == 0 && x == matriz.get(0).size() - 1) {
                 y++;
             } else if (x == 0 && y == matriz.size() - 1) {
@@ -178,65 +175,52 @@ public void clear(){
             } else if (x == 0 || x == matriz.get(0).size() - 1) {
                 y++;
             }
-            //System.out.println(matriz.get(y).get(x) +"  ("+x+" "+y+")");
-            tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x));
+            tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x)) + " ";
 
-            //se mueve en diagonal abajo a la izquierda
-            while (y < matriz.size() - 1 && x > 0) {
-                x--;
-                y++;
-                //System.out.println(matriz.get(y).get(x) +"  ("+x+" "+y+")");
-                tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x));
+//movimientos en diagonal
+            if (diagonal == 0) {
+                while (y < matriz.size() - 1 && x > 0) {
+                    x--;
+                    y++;
+                    tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x)) + " ";
+                }
+                diagonal = 1;
+            } else {
+                while (x < matriz.get(0).size() - 1 && y > 0) {
+                    x++;
+                    y--;
+                    tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x)) + " ";
+                }
+                diagonal = 0;
             }
 
-            //se mueve 1 vez
-            if (y == 0 && x == matriz.get(0).size() - 1) {
-                y++;
-            } else if (x == 0 && y == matriz.size() - 1) {
-                x++;
-            } else if (y == 0 || y == matriz.size() - 1) {
-                x++;
-            } else if (x == 0 || x == matriz.get(0).size() - 1) {
-                y++;
-            }
-            //System.out.println(matriz.get(y).get(x) +"  ("+x+" "+y+")");
-            tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x));
-
-            //se mueve en diagonal arriba a la derecha
-            while (x < matriz.get(0).size() - 1 && y > 0) {
-                x++;
-                y--;
-                //System.out.println(matriz.get(y).get(x) +"  ("+x+" "+y+")");
-                tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x));
-            }
         }
         return tramaZigzag;
     }
 
-    private ArrayList<ArrayList<String>> contarRepeticiones(String mensaje) {
-        ArrayList<ArrayList<String>> codificacion = new ArrayList<ArrayList<String>>();
-        //System.out.println("MESNAJE \t \t" + mensaje);
-        mensaje = mensaje + " ";
+    private ArrayList<ArrayList<String>> contarRepeticiones(String mensaje1) {
+        ArrayList<ArrayList<String>> countRepeticiones = new ArrayList<ArrayList<String>>();
+        mensaje1 = mensaje1 + "x";
+        String[] mensaje = mensaje1.split(" ");
         int count = 0;
-        char comp = mensaje.charAt(0);
-        for (int i = 0; i < mensaje.length(); i++) {
-            //System.out.println("comp == mensaje.charAt(i)  "+comp+"  "+mensaje.charAt(i));
-            if (comp == mensaje.charAt(i)) {
+        String comp = mensaje[0];
+        for (int i = 0; i < mensaje.length; i++) {
+            if (comp.equals(mensaje[i])) {
                 count++;
             } else {
                 ArrayList<String> n = new ArrayList<String>();
-                n.add(String.valueOf(comp));
+                n.add(comp);
                 n.add(String.valueOf(count));
-                codificacion.add(n);
+                countRepeticiones.add(n);
                 count = 1;
-                comp = mensaje.charAt(i);
+                comp = mensaje[i];
             }
         }
-        System.out.println("codificacion \t" + codificacion);
-        return codificacion;
+        System.out.println("codificacion \t" + countRepeticiones);
+        return countRepeticiones;
     }
 
-    private String codificacion(ArrayList<ArrayList<String>> mensaje,String tipo) {
+    private String codificacion(ArrayList<ArrayList<String>> mensaje, String tipo) {
         int numMayor = 0;
         String res = "";
         for (int i = 0; i < mensaje.size(); i++) {
@@ -244,17 +228,16 @@ public void clear(){
                 numMayor = Integer.valueOf(mensaje.get(i).get(1));
             }
         }
-        Integer.toBinaryString(numMayor);
         for (int i = 0; i < mensaje.size(); i++) {
-            res = res + mensaje.get(i).get(0);
+            res = res + mensaje.get(i).get(0) + " ";
             if (tipo == "z") {
-                MostrarcodificacionZigzag =   MostrarcodificacionZigzag +"  "+ mensaje.get(i).get(0)+"  ";
+                MostrarcodificacionZigzag = MostrarcodificacionZigzag + "  " + mensaje.get(i).get(0) + "  ";
             }
             if (tipo == "h") {
-                MostrarcodificacionHorizontal = MostrarcodificacionHorizontal +"  "+ mensaje.get(i).get(0)+"  ";
+                MostrarcodificacionHorizontal = MostrarcodificacionHorizontal + "  " + mensaje.get(i).get(0) + "  ";
             }
             if (tipo == "v") {
-                MostrarcodificacionVertical = MostrarcodificacionVertical +"  "+ mensaje.get(i).get(0) +"  ";
+                MostrarcodificacionVertical = MostrarcodificacionVertical + "  " + mensaje.get(i).get(0) + "  ";
             }
             String bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(1)));
             while (bin.length() < Integer.toBinaryString(numMayor).length()) {
@@ -275,6 +258,7 @@ public void clear(){
         return res;
     }
 
+// pendeinte de arreglo
     private String tasaDeComprecion(String total, String resultantes) {
         int total1 = (total.length());
         int resultantes1 = (resultantes.length());
@@ -284,6 +268,140 @@ public void clear(){
         res = res * 100;
         System.out.println("tasaDeComprecion  " + res);
         return String.valueOf(res);
+    }
+
+    private void bitBandera(ArrayList<ArrayList<String>> mensaje) {
+        int numMayor = 0;
+        for (int i = 0; i < mensaje.size(); i++) {
+            if (Integer.valueOf(mensaje.get(i).get(1)) > numMayor) {
+                numMayor = Integer.valueOf(mensaje.get(i).get(1));
+            }
+        }
+        for (int i = 0; i < mensaje.size(); i++) {
+            if (Integer.valueOf(mensaje.get(i).get(0)) > numMayor) {
+                numMayor = Integer.valueOf(mensaje.get(i).get(0));
+            }
+        }
+        String binNumMayor = Integer.toBinaryString(numMayor);
+        String bin;
+        for (int i = 0; i < mensaje.size(); i++) {
+            if ("1" != mensaje.get(i).get(1)) {
+                MostrarBitBandera = MostrarBitBandera + "1 ";
+                bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(1)));
+                while (bin.length() < binNumMayor.length()) {
+                    bin = "0" + bin;
+                }
+                MostrarBitBandera = MostrarBitBandera + bin;
+                MostrarBitBandera = MostrarBitBandera + "\n";
+            }
+            MostrarBitBandera = MostrarBitBandera + "0 ";
+            bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(0)));
+            while (bin.length() < binNumMayor.length()) {
+                bin = "0" + bin;
+            }
+            MostrarBitBandera = MostrarBitBandera + bin;
+            MostrarBitBandera = MostrarBitBandera + "\n";
+        }
+    }
+
+    private void byteBandera(ArrayList<ArrayList<String>> mensaje) {
+        int numMayor = 0;
+        for (int i = 0; i < mensaje.size(); i++) {
+            if (Integer.valueOf(mensaje.get(i).get(1)) > numMayor) {
+                numMayor = Integer.valueOf(mensaje.get(i).get(1));
+            }
+        }
+        for (int i = 0; i < mensaje.size(); i++) {
+            if (Integer.valueOf(mensaje.get(i).get(0)) > numMayor) {
+                numMayor = Integer.valueOf(mensaje.get(i).get(0));
+            }
+        }
+        String binNumMayor = Integer.toBinaryString(numMayor);
+        String bin;
+        String unos = "1";
+        for (int i = 0; i < mensaje.size(); i++) {
+            if ("1" != mensaje.get(i).get(1)) {
+                while (unos.length() < binNumMayor.length()) {
+                    unos = "1" + unos;
+                }
+                MostrarByteBandera = getMostrarByteBandera() + unos;
+                MostrarByteBandera = getMostrarByteBandera() + "\n";
+                bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(1)));
+                while (bin.length() < binNumMayor.length()) {
+                    bin = "0" + bin;
+                }
+                MostrarByteBandera = getMostrarByteBandera() + bin;
+                MostrarByteBandera = getMostrarByteBandera() + "\n";
+            }
+            bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(0)));
+            while (bin.length() < binNumMayor.length()) {
+                bin = "0" + bin;
+            }
+            MostrarByteBandera = getMostrarByteBandera() + bin;
+            MostrarByteBandera = getMostrarByteBandera() + "\n";
+        }
+    }
+
+    private void byteAnticipado(ArrayList<ArrayList<String>> mensaje) {
+        int numMayor = 0;
+        for (int i = 0; i < mensaje.size(); i++) {
+            if (Integer.valueOf(mensaje.get(i).get(1)) > numMayor) {
+                numMayor = Integer.valueOf(mensaje.get(i).get(1));
+            }
+        }
+        for (int i = 0; i < mensaje.size(); i++) {
+            if (Integer.valueOf(mensaje.get(i).get(0)) > numMayor) {
+                numMayor = Integer.valueOf(mensaje.get(i).get(0));
+            }
+        }
+        String binNumMayor = Integer.toBinaryString(numMayor);
+        String bin = "";
+        ArrayList<String> anticipado1 = new ArrayList<String>();
+        String anticipado = "";
+        for (int i = 0; i < mensaje.size(); i++) {
+            if ("1" != mensaje.get(i).get(1)) {
+                anticipado = anticipado + "10";
+
+                bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(1)));
+                while (bin.length() < binNumMayor.length()) {
+                    bin = "0" + bin;
+                }
+                anticipado1.add(bin);
+                bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(0)));
+                while (bin.length() < binNumMayor.length()) {
+                    bin = "0" + bin;
+                }
+                anticipado1.add(bin);
+            } else {
+                anticipado = anticipado + "0";
+                anticipado1.add(mensaje.get(i).get(0));
+            }
+        }
+
+        System.out.println("anticipado " + anticipado);
+        System.out.println("anticipado1 " + anticipado1);
+        while (true) {
+            try {
+                MostrarByteAnticipado = getMostrarByteAnticipado() + anticipado.substring(0, binNumMayor.length()) + "\n";
+                anticipado.substring(binNumMayor.length());
+            } catch (Exception e) {
+                MostrarByteAnticipado = getMostrarByteAnticipado() + anticipado + "\n";
+            }
+
+            try {
+                for (int i = 0; i < binNumMayor.length(); i++) {
+                    MostrarByteAnticipado = getMostrarByteAnticipado() + anticipado1.get(0) + "\n";
+                    anticipado1.remove(0);
+                }
+                System.out.println("anticipado1 " + anticipado1.size());
+            } catch (Exception e) {
+                for (int i = 0; i < anticipado1.size(); i++) {
+                    MostrarByteAnticipado = getMostrarByteAnticipado() + anticipado1.get(i) + "\n";
+                }
+                System.out.println("entre1");
+                break;
+            }
+        }
     }
 
     /**
@@ -403,5 +521,26 @@ public void clear(){
      */
     public String getMostrarcodificacionZigzag() {
         return MostrarcodificacionZigzag;
+    }
+
+    /**
+     * @return the MostrarBitBandera
+     */
+    public String getMostrarBitBandera() {
+        return MostrarBitBandera;
+    }
+
+    /**
+     * @return the MostrarByteBandera
+     */
+    public String getMostrarByteBandera() {
+        return MostrarByteBandera;
+    }
+
+    /**
+     * @return the MostrarByteAnticipado
+     */
+    public String getMostrarByteAnticipado() {
+        return MostrarByteAnticipado;
     }
 }
