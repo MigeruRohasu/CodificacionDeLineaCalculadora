@@ -331,7 +331,7 @@ public class RLE extends javax.swing.JFrame {
                 a.insertarMatriz(matriz);
                 Mati.setText(a.getMostrarMatriz());
             }
-            a.InniciarV1();
+            a.IniciarV1();
 
             if (Zigzag.isSelected()) {
                 codi1.setText(a.getMostrarcodificacionZigzag());

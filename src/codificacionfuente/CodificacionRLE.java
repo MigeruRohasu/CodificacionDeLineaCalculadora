@@ -12,18 +12,18 @@ import java.util.*;
  */
 public class CodificacionRLE {
 
-    ArrayList<ArrayList<Integer>> matriz = new ArrayList<ArrayList<Integer>>();
-    private String MostrarMatriz = "";
-    private String codificacionVertical = "";
-    private String MostrarcodificacionVertical = "";
-    private String tasaDeComprecionVertical = "";
-    private String codificacionHorizontal = "";
-    private String MostrarcodificacionHorizontal = "";
-    private String tasaDeComprecionHorizontal = "";
-    private String codificacionZigzag = "";
-    private String MostrarcodificacionZigzag = "";
-    private String tasaDeComprecionZigzag = "";
-    private String tamañoMatriz = "35x35";
+    protected ArrayList<ArrayList<Integer>> matriz = new ArrayList<ArrayList<Integer>>();
+    protected String MostrarMatriz = "";
+    protected String codificacionVertical = "";
+    protected String MostrarcodificacionVertical = "";
+    protected String tasaDeComprecionVertical = "";
+    protected String codificacionHorizontal = "";
+    protected String MostrarcodificacionHorizontal = "";
+    protected String tasaDeComprecionHorizontal = "";
+    protected String codificacionZigzag = "";
+    protected String MostrarcodificacionZigzag = "";
+    protected String tasaDeComprecionZigzag = "";
+    protected String tamañoMatriz = "35x35";
 
     private String MostrarBitBandera = "";
     private String MostrarByteBandera = "";
@@ -42,12 +42,12 @@ public class CodificacionRLE {
         tasaDeComprecionZigzag = "";
         tamañoMatriz = "35x35";
         MostrarBitBandera = "";
-        matriz.clear();
+        getMatriz().clear();
         MostrarByteBandera = "";
         MostrarByteAnticipado = "";
     }
 
-    public void InniciarV1() {
+    public void IniciarV1() {
         System.out.println("recorrerVertical \t" + recorrerVertical());
         setCodificacionVertical(codificacion(contarRepeticiones(recorrerVertical()), "v"));
         setTasaDeComprecionVertical(tasaDeComprecion(recorrerVertical(), getCodificacionVertical()));
@@ -63,7 +63,7 @@ public class CodificacionRLE {
         }
     }
 
-    public void InniciarV2() {
+    public void IniciarV2() {
         String[] parts = tamañoMatriz.split("x");
         int filas = Integer.valueOf(parts[0]);
         if (filas > 2) {
@@ -72,6 +72,19 @@ public class CodificacionRLE {
             byteBandera(contarRepeticiones(recorrerZigzag()));
             byteAnticipado(contarRepeticiones(recorrerZigzag()));
         }
+    }
+
+    public void IniciarV3(String fila) {
+        
+        int columnas= fila.length();
+        ArrayList<Integer> n = new ArrayList<Integer>();
+        for (int i = 0; i < fila.length(); i++) {
+                        n.add(Integer.valueOf(String.valueOf(fila.charAt(i))));
+        }
+        matriz.add(n);
+        System.out.println("recorrerHorizontal \t" + recorrerHorizontal());
+        setCodificacionHorizontal(codificacion(contarRepeticiones(recorrerHorizontal()), "h"));
+        setTasaDeComprecionHorizontal(tasaDeComprecion(recorrerHorizontal(), getCodificacionHorizontal()));
     }
 
     public void insertarMatriz(String fila) {
@@ -91,9 +104,9 @@ public class CodificacionRLE {
             }
             MostrarMatriz = getMostrarMatriz() + "\n";
             System.out.println();
-            matriz.add(n);
+            getMatriz().add(n);
         }
-        System.out.println("matriz " + matriz);
+        System.out.println("matriz " + getMatriz());
     }
 
     public void crearMatriz() {
@@ -131,65 +144,65 @@ public class CodificacionRLE {
             }
             MostrarMatriz = getMostrarMatriz() + "\n";
             System.out.println();
-            matriz.add(n);
+            getMatriz().add(n);
         }
-        System.out.println("matriz " + matriz);
+        System.out.println("matriz " + getMatriz());
     }
 
-    private String recorrerHorizontal() {
+    protected String recorrerHorizontal() {
         String tramaHorizontal = "";
-        for (int a = 0; a < matriz.size(); a++) {
+        for (int a = 0; a < getMatriz().size(); a++) {
             ArrayList<Integer> n = new ArrayList<Integer>();
-            for (int b = 0; b < matriz.get(0).size(); b++) {
-                tramaHorizontal = tramaHorizontal + String.valueOf(matriz.get(a).get(b)) + " ";
+            for (int b = 0; b < getMatriz().get(0).size(); b++) {
+                tramaHorizontal = tramaHorizontal + String.valueOf(getMatriz().get(a).get(b)) + " ";
             }
         }
         return tramaHorizontal;
     }
 
-    private String recorrerVertical() {
+    protected String recorrerVertical() {
         String tramaVertical = "";
-        for (int b = 0; b < matriz.get(0).size(); b++) {
-            for (int a = 0; a < matriz.size(); a++) {
+        for (int b = 0; b < getMatriz().get(0).size(); b++) {
+            for (int a = 0; a < getMatriz().size(); a++) {
                 ArrayList<Integer> n = new ArrayList<Integer>();
-                tramaVertical = tramaVertical + String.valueOf(matriz.get(a).get(b)) + " ";
+                tramaVertical = tramaVertical + String.valueOf(getMatriz().get(a).get(b)) + " ";
             }
         }
         return tramaVertical;
     }
 
-    private String recorrerZigzag() {
+    protected String recorrerZigzag() {
         String tramaZigzag = "";
         int y = 0;
         int x = 0;
         int diagonal = 0;
-        tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x)) + " ";
-        while (y != matriz.size() - 1 || x != matriz.get(0).size() - 1) {
+        tramaZigzag = tramaZigzag + String.valueOf(getMatriz().get(y).get(x)) + " ";
+        while (y != getMatriz().size() - 1 || x != getMatriz().get(0).size() - 1) {
 //movimientos hacia la derecha o hacia abajo
-            if (y == 0 && x == matriz.get(0).size() - 1) {
+            if (y == 0 && x == getMatriz().get(0).size() - 1) {
                 y++;
-            } else if (x == 0 && y == matriz.size() - 1) {
+            } else if (x == 0 && y == getMatriz().size() - 1) {
                 x++;
-            } else if (y == 0 || y == matriz.size() - 1) {
+            } else if (y == 0 || y == getMatriz().size() - 1) {
                 x++;
-            } else if (x == 0 || x == matriz.get(0).size() - 1) {
+            } else if (x == 0 || x == getMatriz().get(0).size() - 1) {
                 y++;
             }
-            tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x)) + " ";
+            tramaZigzag = tramaZigzag + String.valueOf(getMatriz().get(y).get(x)) + " ";
 
 //movimientos en diagonal
             if (diagonal == 0) {
-                while (y < matriz.size() - 1 && x > 0) {
+                while (y < getMatriz().size() - 1 && x > 0) {
                     x--;
                     y++;
-                    tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x)) + " ";
+                    tramaZigzag = tramaZigzag + String.valueOf(getMatriz().get(y).get(x)) + " ";
                 }
                 diagonal = 1;
             } else {
-                while (x < matriz.get(0).size() - 1 && y > 0) {
+                while (x < getMatriz().get(0).size() - 1 && y > 0) {
                     x++;
                     y--;
-                    tramaZigzag = tramaZigzag + String.valueOf(matriz.get(y).get(x)) + " ";
+                    tramaZigzag = tramaZigzag + String.valueOf(getMatriz().get(y).get(x)) + " ";
                 }
                 diagonal = 0;
             }
@@ -229,7 +242,7 @@ public class CodificacionRLE {
             }
         }
         for (int i = 0; i < mensaje.size(); i++) {
-            res = res + mensaje.get(i).get(0) + " ";
+            res = res + mensaje.get(i).get(0);
             if (tipo == "z") {
                 MostrarcodificacionZigzag = MostrarcodificacionZigzag + "  " + mensaje.get(i).get(0) + "  ";
             }
@@ -542,5 +555,12 @@ public class CodificacionRLE {
      */
     public String getMostrarByteAnticipado() {
         return MostrarByteAnticipado;
+    }
+
+    /**
+     * @return the matriz
+     */
+    public ArrayList<ArrayList<Integer>> getMatriz() {
+        return matriz;
     }
 }

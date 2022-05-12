@@ -315,7 +315,7 @@ public class RLE_V2 extends javax.swing.JFrame {
                 a.insertarMatriz(matriz);
                 Mati.setText(a.getMostrarMatriz());
             }
-            a.InniciarV2();
+            a.IniciarV2();
 
             if (ByteAnticipado.isSelected()) {
                 codi1.setText(a.getMostrarByteAnticipado());
