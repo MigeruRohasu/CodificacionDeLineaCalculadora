@@ -58,6 +58,9 @@ public class RLE_V2 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Mati = new javax.swing.JTextArea();
+        Horizontal = new javax.swing.JRadioButton();
+        Vertical = new javax.swing.JRadioButton();
+        Zigzag = new javax.swing.JRadioButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -225,6 +228,27 @@ public class RLE_V2 extends javax.swing.JFrame {
         Mati.setRows(5);
         jScrollPane2.setViewportView(Mati);
 
+        Horizontal.setText("Recorrer Horizontal");
+        Horizontal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HorizontalActionPerformed(evt);
+            }
+        });
+
+        Vertical.setText("Recorrer Vertical");
+        Vertical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerticalActionPerformed(evt);
+            }
+        });
+
+        Zigzag.setText("Recorrer Zigzag");
+        Zigzag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZigzagActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -233,25 +257,29 @@ public class RLE_V2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(389, 389, 389)
+                        .addComponent(calcular)
+                        .addGap(62, 62, 62)
+                        .addComponent(clean)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(codi, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bitBandera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ByteAnticipado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(byteBandera, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(389, 389, 389)
-                        .addComponent(calcular)
-                        .addGap(62, 62, 62)
-                        .addComponent(clean)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(bitBandera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ByteAnticipado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(byteBandera, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Horizontal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Zigzag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Vertical, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,25 +287,29 @@ public class RLE_V2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(bitBandera)
-                                .addGap(18, 18, 18)
-                                .addComponent(byteBandera)
-                                .addGap(18, 18, 18)
-                                .addComponent(ByteAnticipado))
                             .addComponent(codi))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(69, 69, 69)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(calcular)
-                    .addComponent(clean))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(calcular)
+                            .addComponent(clean)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(bitBandera)
+                        .addGap(18, 18, 18)
+                        .addComponent(byteBandera)
+                        .addGap(18, 18, 18)
+                        .addComponent(ByteAnticipado)
+                        .addGap(46, 46, 46)
+                        .addComponent(Horizontal)
+                        .addGap(18, 18, 18)
+                        .addComponent(Vertical)
+                        .addGap(18, 18, 18)
+                        .addComponent(Zigzag)
+                        .addGap(0, 39, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -315,14 +347,34 @@ public class RLE_V2 extends javax.swing.JFrame {
                 a.insertarMatriz(matriz);
                 Mati.setText(a.getMostrarMatriz());
             }
-            a.IniciarV2();
+            a.IniciarV2("h");
 
             if (ByteAnticipado.isSelected()) {
-                codi1.setText(a.getMostrarByteAnticipado());
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteAnticipado());
             } else if (bitBandera.isSelected()) {
-                codi1.setText(a.getMostrarBitBandera());
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarBitBandera());
             } else if (byteBandera.isSelected()) {
-                codi1.setText(a.getMostrarByteBandera());
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteBandera());
+            }
+
+a.IniciarV2("v");
+
+            if (ByteAnticipado.isSelected()) {
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteAnticipado());
+            } else if (bitBandera.isSelected()) {
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarBitBandera());
+            } else if (byteBandera.isSelected()) {
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteBandera());
+            }
+
+a.IniciarV2("z");
+
+            if (ByteAnticipado.isSelected()) {
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteAnticipado());
+            } else if (bitBandera.isSelected()) {
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarBitBandera());
+            } else if (byteBandera.isSelected()) {
+                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteBandera());
             }
         }
     }//GEN-LAST:event_calcularActionPerformed
@@ -398,6 +450,21 @@ public class RLE_V2 extends javax.swing.JFrame {
         bitBandera.setSelected(false);
     }//GEN-LAST:event_ByteAnticipadoActionPerformed
 
+    private void HorizontalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HorizontalActionPerformed
+        Vertical.setSelected(false);
+        Zigzag.setSelected(false);
+    }//GEN-LAST:event_HorizontalActionPerformed
+
+    private void VerticalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerticalActionPerformed
+        Horizontal.setSelected(false);
+        Zigzag.setSelected(false);
+    }//GEN-LAST:event_VerticalActionPerformed
+
+    private void ZigzagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZigzagActionPerformed
+        Vertical.setSelected(false);
+        Horizontal.setSelected(false);
+    }//GEN-LAST:event_ZigzagActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -437,10 +504,13 @@ public class RLE_V2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JRadioButton ByteAnticipado;
+    private javax.swing.JRadioButton Horizontal;
     private javax.swing.JRadioButton Insert;
     private javax.swing.JTextArea Mati;
     private javax.swing.JRadioButton Rand;
     private javax.swing.JTextField Tamaño;
+    private javax.swing.JRadioButton Vertical;
+    private javax.swing.JRadioButton Zigzag;
     private javax.swing.JRadioButton bitBandera;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton byteBandera;

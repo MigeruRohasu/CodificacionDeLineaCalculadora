@@ -312,11 +312,16 @@ public class DPCM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
-        if ( DPCM.isSelected() == false && DPCM_RLE.isSelected() == false) {
+        
+        
+if ( DPCM.isSelected() == false && DPCM_RLE.isSelected() == false) {
             error.setText("Seleccione un metodo de lectura");
         } else {
+
             error.setText("");
             if (Insert.isSelected()) {
+
+System.out.println("entre lamparaaaaaaaaaaaaaaa");System.out.println("entre lamparaaaaaaaaaaaaaaa");
                 a.setTamañoMatriz(Tamaño.getText());
                 a.insertarMatriz(matriz);
                 Mati.setText(a.getMostrarMatriz());

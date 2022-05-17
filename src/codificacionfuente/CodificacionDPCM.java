@@ -32,6 +32,7 @@ public class CodificacionDPCM {
     }
 
     public void Iniciar() {
+
         recorrerHorizontal();
         codificar();
     }

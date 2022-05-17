@@ -63,15 +63,28 @@ public class CodificacionRLE {
         }
     }
 
-    public void IniciarV2() {
+    public void IniciarV2(String tipo) {
         String[] parts = tamañoMatriz.split("x");
         int filas = Integer.valueOf(parts[0]);
-        if (filas > 2) {
-            System.out.println("recorrerZigzag \t \t" + recorrerZigzag());
-            bitBandera(contarRepeticiones(recorrerZigzag()));
-            byteBandera(contarRepeticiones(recorrerZigzag()));
-            byteAnticipado(contarRepeticiones(recorrerZigzag()));
+        if (tipo == "z") {
+            if (filas > 2) {
+                System.out.println("recorrerZigzag \t \t" + recorrerZigzag());
+                bitBandera(contarRepeticiones(recorrerZigzag()));
+                byteBandera(contarRepeticiones(recorrerZigzag()));
+                byteAnticipado(contarRepeticiones(recorrerZigzag()));
+            }
+        } else if (tipo == "h") {
+                System.out.println("recorrerHorizontal \t" + recorrerHorizontal());
+                bitBandera(contarRepeticiones(recorrerHorizontal()));
+                byteBandera(contarRepeticiones(recorrerHorizontal()));
+                byteAnticipado(contarRepeticiones(recorrerHorizontal()));
+        } else if (tipo == "v") {
+                System.out.println("recorrerVertical \t \t" + recorrerVertical());
+                bitBandera(contarRepeticiones(recorrerVertical()));
+                byteBandera(contarRepeticiones(recorrerVertical()));
+                byteAnticipado(contarRepeticiones(recorrerVertical()));
         }
+
     }
 
     public void IniciarV3(String fila) {
