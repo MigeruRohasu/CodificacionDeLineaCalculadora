@@ -4,12 +4,28 @@ import java.util.*;
 
 public class CodificacionAritmetica {
 
+    /**
+     * @return the tramaBin
+     */
+    public String getTramaBin() {        
+        setTramaBin(binarioDecimal(valorCodificar).substring(2));
+        return tramaBin;
+    }
+
+    /**
+     * @param tramaBin the tramaBin to set
+     */
+    public void setTramaBin(String tramaBin) {
+        this.tramaBin = tramaBin;
+    }
+
     //ArrayList<Vector<Double>> probabilidad = new ArrayList<Vector<Double>>();
     public ArrayList<Vector<Double>> linea = new ArrayList<Vector<Double>>();
     private Vector<Double> variablesDecodificar = new Vector<Double>();
     public double valorCodificar;
     public String stringlinea;
     public String stringDecodificar;
+    private String tramaBin="";
 
     public boolean mayorA1=false;
 
@@ -95,7 +111,7 @@ public class CodificacionAritmetica {
             }
         }
         valorCodificar = aActual;
-
+        System.out.println("");
         //decBin(valorCodificar);
     }
 

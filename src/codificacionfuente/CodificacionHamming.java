@@ -15,7 +15,7 @@ public class CodificacionHamming {
     private ArrayList<String> linea = new ArrayList<String>();
     private ArrayList<ArrayList<String>> matriz = new ArrayList<ArrayList<String>>();
     private String mostrarFP = "\n";
-    private String mensaje = "";
+    private String tramaBin = "";
     private String check3="";
 
     public void clear() {
@@ -23,7 +23,7 @@ public class CodificacionHamming {
         linea.clear();
         matriz.clear();
         mostrarFP = "\n";
-        mensaje = "";
+        tramaBin = "";
     }
 
     public void Iniciar(String fila) {
@@ -90,11 +90,11 @@ public class CodificacionHamming {
                 potencias2 = potencias2 * 2;
             }
         }
-        mensaje = "";
+        tramaBin = "";
         for (int i = 0; i < linea.size(); i++) {
-            mensaje = getMensaje() + linea.get(i);
+            tramaBin = getTramaBin() + linea.get(i);
         }
-        System.out.println("mensaje de salida " + getMensaje());
+        System.out.println("mensaje de salida " + getTramaBin());
         mostrarMatriz(matriz);
     }
 
@@ -112,16 +112,16 @@ public class CodificacionHamming {
 
     public void simularError(String fila, String errorSimulado) {
         int error = Integer.valueOf(errorSimulado);
-        mensaje = "";
+        tramaBin = "";
         for (int i = 0; i < fila.length(); i++) {
             if (i == error) {
                 if (fila.charAt(i) == '0') {
-                    mensaje = getMensaje() + "1";
+                    tramaBin = getTramaBin() + "1";
                 } else {
-                    mensaje = getMensaje() + "0";
+                    tramaBin = getTramaBin() + "0";
                 }
             } else {
-                mensaje = getMensaje() + fila.charAt(i);
+                tramaBin = getTramaBin() + fila.charAt(i);
             }
         }
     }
@@ -217,11 +217,11 @@ public class CodificacionHamming {
                 potencias2 = potencias2 * 2;
             }
         }
-        mensaje = "";
+        tramaBin = "";
         for (int i = 0; i < linea.size(); i++) {
-            mensaje = getMensaje() + linea.get(i);
+            tramaBin = getTramaBin() + linea.get(i);
         }
-        System.out.println("mensaje de salida " + getMensaje());
+        System.out.println("mensaje de salida " + getTramaBin());
         System.out.println("check2 " + check2);
         mostrarMatriz(matriz);
 
@@ -244,10 +244,10 @@ public class CodificacionHamming {
     }
 
     /**
-     * @return the mensaje
+     * @return the tramaBin
      */
-    public String getMensaje() {
-        return mensaje;
+    public String getTramaBin() {
+        return tramaBin;
     }
 
     /**

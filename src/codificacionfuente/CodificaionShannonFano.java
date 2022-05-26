@@ -12,7 +12,6 @@ public class CodificaionShannonFano {
 
     static String name;
     static int Espacio;
-
     static int Orden;
 
     public CodificaionShannonFano(String IngreseString, String IngreseEspacio, String IngreseOrden) {
@@ -36,13 +35,12 @@ public class CodificaionShannonFano {
 
     public CodificaionShannonFano(String IngreseString) {
         name = IngreseString;
-
         Espacio = 0;
-
         Orden = 0;
 
     }
     private String sapo = "";
+    private String tramaBin = "";
 
     public void Iniciar() {
         // String to check it's value
@@ -99,11 +97,11 @@ public class CodificaionShannonFano {
                 OrdenFila.setFila(VectorArbol0, VectorArbol1);
 
                 //System.out.println( OrdenFila.getVectorACambiar0()+"\n"+OrdenFila.getVectorACambiar1());
-
                 for (int i = 0; i < OrdenFila.getVectorACambiar1().size(); i++) {
-                    setSapo( getSapo() + Character.toString((char) OrdenFila.getVectorACambiar0().elementAt(i).intValue()) + "= ");
+                    setSapo(getSapo() + Character.toString((char) OrdenFila.getVectorACambiar0().elementAt(i).intValue()) + "= ");
                     setSapo(getSapo() + OrdenFila.getVectorACambiar1().elementAt(i).toString());
                     setSapo(getSapo() + "   ");
+                    setTramaBin(getTramaBin()+OrdenFila.getVectorACambiar1().elementAt(i).toString());
                 }
                 System.out.println(getSapo());
 
@@ -134,7 +132,7 @@ public class CodificaionShannonFano {
                 OrdenFila.setFila(VectorArbol0, VectorArbol1);
 //System.out.println( OrdenFila.getVectorACambiar0()+"\n"+OrdenFila.getVectorACambiar1());
                 for (int i = 0; i < OrdenFila.getVectorACambiar1().size(); i++) {
-                    setSapo( getSapo() + Character.toString((char) OrdenFila.getVectorACambiar0().elementAt(i).intValue()) + "= ");
+                    setSapo(getSapo() + Character.toString((char) OrdenFila.getVectorACambiar0().elementAt(i).intValue()) + "= ");
                     setSapo(getSapo() + OrdenFila.getVectorACambiar1().elementAt(i).toString());
                     setSapo(getSapo() + "   ");
                 }
@@ -143,6 +141,7 @@ public class CodificaionShannonFano {
             default:
                 System.out.println("ingrese un orden correcto");
         }
+        System.out.println("getTramaBin() "+getTramaBin());
     }
 
     /**
@@ -157,5 +156,19 @@ public class CodificaionShannonFano {
      */
     public void setSapo(String sapo) {
         this.sapo = sapo;
+    }
+
+    /**
+     * @return the tramaBin
+     */
+    public String getTramaBin() {
+        return tramaBin;
+    }
+
+    /**
+     * @param tramaBin the tramaBin to set
+     */
+    public void setTramaBin(String tramaBin) {
+        this.tramaBin = tramaBin;
     }
 }

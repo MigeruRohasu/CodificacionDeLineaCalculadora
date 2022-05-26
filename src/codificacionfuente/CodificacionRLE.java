@@ -14,20 +14,32 @@ public class CodificacionRLE {
 
     protected ArrayList<ArrayList<Integer>> matriz = new ArrayList<ArrayList<Integer>>();
     protected String MostrarMatriz = "";
+    
     protected String codificacionVertical = "";
     protected String MostrarcodificacionVertical = "";
     protected String tasaDeComprecionVertical = "";
+    private String tramaBinVertical = "";    
+
     protected String codificacionHorizontal = "";
     protected String MostrarcodificacionHorizontal = "";
     protected String tasaDeComprecionHorizontal = "";
+    private String tramaBinHorizontal = "";    
+    
     protected String codificacionZigzag = "";
     protected String MostrarcodificacionZigzag = "";
     protected String tasaDeComprecionZigzag = "";
+    private String tramaBinZigzag = "";    
+    
     protected String tamañoMatriz = "35x35";
 
     private String MostrarBitBandera = "";
+    private String tramaBinBitBandera = "";
+
     private String MostrarByteBandera = "";
+    private String tramaBinByteBandera = "";
+
     private String MostrarByteAnticipado = "";
+    private String tramaBinByteAnticipado = "";
 
     public void clear() {
         MostrarMatriz = "";
@@ -45,6 +57,12 @@ public class CodificacionRLE {
         getMatriz().clear();
         MostrarByteBandera = "";
         MostrarByteAnticipado = "";
+        tramaBinBitBandera="";
+        tramaBinByteBandera="";
+        tramaBinByteAnticipado ="";
+        tramaBinZigzag="";
+        tramaBinHorizontal="";
+        tramaBinVertical="";
     }
 
     public void IniciarV1() {
@@ -272,12 +290,15 @@ public class CodificacionRLE {
             res = res + bin;
             if (tipo == "z") {
                 MostrarcodificacionZigzag = MostrarcodificacionZigzag + bin + "\n";
+                tramaBinZigzag=getTramaBinZigzag()+bin;
             }
             if (tipo == "h") {
                 MostrarcodificacionHorizontal = MostrarcodificacionHorizontal + bin + "\n";
+                tramaBinHorizontal=getTramaBinHorizontal()+bin;
             }
             if (tipo == "v") {
                 MostrarcodificacionVertical = MostrarcodificacionVertical + bin + "\n";
+                tramaBinVertical=getTramaBinVertical()+bin;
             }
         }
         System.out.println("res  " + res);
@@ -313,19 +334,23 @@ public class CodificacionRLE {
         for (int i = 0; i < mensaje.size(); i++) {
             if ("1" != mensaje.get(i).get(1)) {
                 MostrarBitBandera = MostrarBitBandera + "1 ";
+                tramaBinBitBandera=getTramaBinBitBandera()+"1";
                 bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(1)));
                 while (bin.length() < binNumMayor.length()) {
                     bin = "0" + bin;
                 }
                 MostrarBitBandera = MostrarBitBandera + bin;
+                tramaBinBitBandera=getTramaBinBitBandera()+bin;
                 MostrarBitBandera = MostrarBitBandera + "\n";
             }
             MostrarBitBandera = MostrarBitBandera + "0 ";
+            tramaBinBitBandera=getTramaBinBitBandera()+"0";
             bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(0)));
             while (bin.length() < binNumMayor.length()) {
                 bin = "0" + bin;
             }
             MostrarBitBandera = MostrarBitBandera + bin;
+            tramaBinBitBandera=getTramaBinBitBandera()+bin;
             MostrarBitBandera = MostrarBitBandera + "\n";
         }
     }
@@ -351,12 +376,14 @@ public class CodificacionRLE {
                     unos = "1" + unos;
                 }
                 MostrarByteBandera = getMostrarByteBandera() + unos;
+                tramaBinByteBandera=getTramaBinByteBandera()+unos;
                 MostrarByteBandera = getMostrarByteBandera() + "\n";
                 bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(1)));
                 while (bin.length() < binNumMayor.length()) {
                     bin = "0" + bin;
                 }
                 MostrarByteBandera = getMostrarByteBandera() + bin;
+                tramaBinByteBandera=getTramaBinByteBandera()+bin;
                 MostrarByteBandera = getMostrarByteBandera() + "\n";
             }
             bin = Integer.toBinaryString(Integer.valueOf(mensaje.get(i).get(0)));
@@ -364,6 +391,7 @@ public class CodificacionRLE {
                 bin = "0" + bin;
             }
             MostrarByteBandera = getMostrarByteBandera() + bin;
+            tramaBinByteBandera=getTramaBinByteBandera()+bin;
             MostrarByteBandera = getMostrarByteBandera() + "\n";
         }
     }
@@ -409,20 +437,24 @@ public class CodificacionRLE {
         while (true) {
             try {
                 MostrarByteAnticipado = getMostrarByteAnticipado() + anticipado.substring(0, binNumMayor.length()) + "\n";
+                tramaBinByteAnticipado=getTramaBinByteAnticipado()+ anticipado.substring(0, binNumMayor.length());
                 anticipado.substring(binNumMayor.length());
             } catch (Exception e) {
                 MostrarByteAnticipado = getMostrarByteAnticipado() + anticipado + "\n";
+                tramaBinByteAnticipado=getTramaBinByteAnticipado()+ anticipado;
             }
 
             try {
                 for (int i = 0; i < binNumMayor.length(); i++) {
                     MostrarByteAnticipado = getMostrarByteAnticipado() + anticipado1.get(0) + "\n";
+                    MostrarByteAnticipado=MostrarByteAnticipado+anticipado1.get(0);
                     anticipado1.remove(0);
                 }
                 System.out.println("anticipado1 " + anticipado1.size());
             } catch (Exception e) {
                 for (int i = 0; i < anticipado1.size(); i++) {
                     MostrarByteAnticipado = getMostrarByteAnticipado() + anticipado1.get(i) + "\n";
+                    MostrarByteAnticipado=MostrarByteAnticipado+anticipado1.get(i);
                 }
                 System.out.println("entre1");
                 break;
@@ -575,5 +607,47 @@ public class CodificacionRLE {
      */
     public ArrayList<ArrayList<Integer>> getMatriz() {
         return matriz;
+    }
+
+    /**
+     * @return the tramaBinVertical
+     */
+    public String getTramaBinVertical() {
+        return tramaBinVertical;
+    }
+
+    /**
+     * @return the tramaBinHorizontal
+     */
+    public String getTramaBinHorizontal() {
+        return tramaBinHorizontal;
+    }
+
+    /**
+     * @return the tramaBinZigzag
+     */
+    public String getTramaBinZigzag() {
+        return tramaBinZigzag;
+    }
+
+    /**
+     * @return the tramaBinBitBandera
+     */
+    public String getTramaBinBitBandera() {
+        return tramaBinBitBandera;
+    }
+
+    /**
+     * @return the tramaBinByteBandera
+     */
+    public String getTramaBinByteBandera() {
+        return tramaBinByteBandera;
+    }
+
+    /**
+     * @return the tramaBinByteAnticipado
+     */
+    public String getTramaBinByteAnticipado() {
+        return tramaBinByteAnticipado;
     }
 }

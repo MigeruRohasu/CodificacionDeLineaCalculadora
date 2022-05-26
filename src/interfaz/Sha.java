@@ -11,7 +11,11 @@ import codificacionfuente.CodificaionShannonFano;
  * @author diego
  */
 public class Sha extends javax.swing.JFrame {
+    String tramaBin="";
 
+    public String getTramaBin() {
+        return tramaBin;
+    }
     /**
      * Creates new form Sha
      */
@@ -37,9 +41,7 @@ public class Sha extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         txtcadena = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 51, 0));
 
         jLabel1.setText("Ingrese la cadena de texto a transformar");
 
@@ -93,7 +95,7 @@ public class Sha extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel3.setBackground(new java.awt.Color(204, 0, 51));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -112,7 +114,9 @@ public class Sha extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel4.setBackground(new java.awt.Color(102, 0, 0));
+
+        txtcadena.setBackground(new java.awt.Color(153, 0, 0));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -161,8 +165,6 @@ public class Sha extends javax.swing.JFrame {
     }//GEN-LAST:event_IngresosActionPerformed
 
     private void convertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertirActionPerformed
-        CodificaionShannonFano sh = new CodificaionShannonFano(Ingresos.getText());
-        sh.Iniciar();
         
     }//GEN-LAST:event_convertirActionPerformed
 
@@ -171,6 +173,7 @@ public class Sha extends javax.swing.JFrame {
         sh.Iniciar();
         //System.out.println("su madre en cuatro   "+);
         txtcaracteres.setText(sh.getSapo());
+        tramaBin=sh.getTramaBin();
     }//GEN-LAST:event_convertirMouseClicked
 
     private void IngresosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IngresosKeyTyped

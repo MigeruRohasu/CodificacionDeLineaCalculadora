@@ -16,6 +16,11 @@ public class RLE_V2 extends javax.swing.JFrame {
     String matriz = "";
     String mostrar = "";
     CodificacionRLE a = new CodificacionRLE();
+    
+    String tramaBin="";
+    public String getTramaBin(){
+        return tramaBin;
+    }
 
     /**
      * Creates new form RLE
@@ -83,8 +88,6 @@ public class RLE_V2 extends javax.swing.JFrame {
             jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 51));
 
@@ -347,34 +350,25 @@ public class RLE_V2 extends javax.swing.JFrame {
                 a.insertarMatriz(matriz);
                 Mati.setText(a.getMostrarMatriz());
             }
-            a.IniciarV2("h");
 
-            if (ByteAnticipado.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteAnticipado());
-            } else if (bitBandera.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarBitBandera());
-            } else if (byteBandera.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteBandera());
+            if(Horizontal.isSelected()){
+                a.IniciarV2("h");
+            }else if(Vertical.isSelected()){
+                a.IniciarV2("v");
+            }else if(Zigzag.isSelected()){
+                a.IniciarV2("z");
             }
-
-a.IniciarV2("v");
-
-            if (ByteAnticipado.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteAnticipado());
-            } else if (bitBandera.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarBitBandera());
-            } else if (byteBandera.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteBandera());
-            }
-
-a.IniciarV2("z");
+            
 
             if (ByteAnticipado.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteAnticipado());
+                codi1.setText(codi1.getText() + "\t \t \t" + a.getMostrarByteAnticipado());
+                tramaBin=a.getTramaBinByteAnticipado();
             } else if (bitBandera.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarBitBandera());
+                codi1.setText(codi1.getText() + "\t \t \t" + a.getMostrarBitBandera());
+                tramaBin=a.getTramaBinBitBandera();
             } else if (byteBandera.isSelected()) {
-                codi1.setText(codi1.getText()+"\t \t \t"+a.getMostrarByteBandera());
+                codi1.setText(codi1.getText() + "\t \t \t" + a.getMostrarByteBandera());
+                tramaBin=a.getTramaBinByteBandera();
             }
         }
     }//GEN-LAST:event_calcularActionPerformed

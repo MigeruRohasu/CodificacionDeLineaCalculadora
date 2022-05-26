@@ -14,6 +14,12 @@ import java.awt.Graphics;
  */
 public class Aritmetica extends javax.swing.JFrame {
 
+
+String tramaBin="";
+
+    public String getTramaBin(){
+        return tramaBin;
+    }
     /**
      * Creates new form aritmetica
      */
@@ -95,8 +101,6 @@ public class Aritmetica extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 204));
 
@@ -261,12 +265,11 @@ public class Aritmetica extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15))
+                            .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
-                        .addComponent(jLabel13)
-                        .addGap(78, 78, 78)))
+                        .addComponent(jLabel13)))
+                .addGap(15, 15, 15)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -438,7 +441,6 @@ public class Aritmetica extends javax.swing.JFrame {
         } else {
             error.setText("");
         }
-
         
         if (soloMensaje.isSelected() == true) {
             a.addMensaje(mensaje.getText());
@@ -487,6 +489,7 @@ public class Aritmetica extends javax.swing.JFrame {
             rangoLetras.setText(a.getStringlinea());
             jLabel10.setText("El valor a codificar es: "+a.valorCodificar);
             jLabel11.setText("El valor a codificar en binario es: " + a.binarioDecimal(a.valorCodificar));
+            System.out.println("\n \n \n \n  \n  \n a.getTramaBin() "+a.getTramaBin()); 
             a.decodificar(mensaje.getText());
             textDecodificar.setText(a.getStringDecodificar());
 
@@ -536,12 +539,14 @@ public class Aritmetica extends javax.swing.JFrame {
                 rangoLetras.setText(a.getStringlinea());
                 jLabel10.setText("El valor a codificar es: " + a.valorCodificar);
                 jLabel11.setText("El valor a codificar en binario es: "+a.binarioDecimal(a.valorCodificar));
+                System.out.println("\n \n \n \n  \n  \n a.getTramaBin() "+a.getTramaBin()); 
                 a.decodificar(mensaje.getText());
                 textDecodificar.setText(a.getStringDecodificar());
             }
         }
         //intervalos.setText(a.getStringlinea1());
         repaint();
+        tramaBin=a.getTramaBin();
     }//GEN-LAST:event_CalcularActionPerformed
 
     private void soloMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soloMensajeActionPerformed

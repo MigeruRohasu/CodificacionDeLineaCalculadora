@@ -16,6 +16,11 @@ public class RLE extends javax.swing.JFrame {
     String matriz = "";
     String mostrar = "";
     CodificacionRLE a = new CodificacionRLE();
+    String tramaBin="";
+
+    public String getTramaBin(){
+        return tramaBin;
+    }
 
     /**
      * Creates new form RLE
@@ -82,8 +87,6 @@ public class RLE extends javax.swing.JFrame {
             jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(56, 255, 247));
 
@@ -335,12 +338,15 @@ public class RLE extends javax.swing.JFrame {
 
             if (Zigzag.isSelected()) {
                 codi1.setText(a.getMostrarcodificacionZigzag());
+                tramaBin=a.getTramaBinZigzag();
                 tasa.setText("Tasa de comprecion de bit: " + a.getTasaDeComprecionZigzag());
             } else if (Horizontal.isSelected()) {
                 codi1.setText(a.getMostrarcodificacionHorizontal());
+                tramaBin=a.getTramaBinHorizontal();
                 tasa.setText("Tasa de comprecion de bit: " + a.getTasaDeComprecionHorizontal());
             } else if (Vertical.isSelected()) {
                 codi1.setText(a.getMostrarcodificacionVertical());
+                tramaBin=a.getTramaBinVertical();
                 tasa.setText("Tasa de comprecion de bit: " + a.getTasaDeComprecionVertical());
             }
 

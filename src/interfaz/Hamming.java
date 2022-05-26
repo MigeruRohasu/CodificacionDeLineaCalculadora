@@ -12,8 +12,8 @@ import codificacionfuente.*;
  */
 public class Hamming extends javax.swing.JFrame {
 
+    CodificacionHamming a = new CodificacionHamming();
 
-CodificacionHamming a = new CodificacionHamming();
     /**
      * Creates new form Hamming
      */
@@ -227,10 +227,10 @@ CodificacionHamming a = new CodificacionHamming();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Calcular2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Calcular2ActionPerformed
-a.clear();
-        mostrar2.setText("");        
-a.decodificar(entrada2.getText());
-        mostrar2.setText("Mensaje \n"+a.getMensaje()+"\n\n FPtable \n"+a.getMostrarFP()+"\n"+"check "+a.getCheck3());
+        a.clear();
+        mostrar2.setText("");
+        a.decodificar(entrada2.getText());
+        mostrar2.setText("Mensaje \n" + a.getTramaBin() + "\n\n FPtable \n" + a.getMostrarFP() + "\n" + "check " + a.getCheck3());
     }//GEN-LAST:event_Calcular2ActionPerformed
 
     private void Limpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Limpiar2ActionPerformed
@@ -240,12 +240,12 @@ a.decodificar(entrada2.getText());
     }//GEN-LAST:event_Limpiar2ActionPerformed
 
     private void Calcular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Calcular1ActionPerformed
-        
+
         a.clear();
         mostrar1.setText("");
         a.Iniciar(entrada1.getText());
-        mostrar1.setText("Mensaje \n"+a.getMensaje()+"\n\n FPtable \n"+a.getMostrarFP());
-        entrada2.setText(a.getMensaje());
+        mostrar1.setText("Mensaje \n" + a.getTramaBin() + "\n\n FPtable \n" + a.getMostrarFP());
+        entrada2.setText(a.getTramaBin());
     }//GEN-LAST:event_Calcular1ActionPerformed
 
     private void Limpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Limpiar1ActionPerformed

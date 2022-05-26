@@ -17,7 +17,7 @@ public class CodificacionDPCM {
     private String MostrarMatriz = "";
     private String MostrarMatriz2 = "";
     private String tamañoMatriz = "35x35";
-    private String codSinEspacios = "";
+    private String tramaBin = "";
     private String codificacion = "";
 
     public void clear() {
@@ -26,7 +26,7 @@ public class CodificacionDPCM {
         MostrarMatriz = "";
         MostrarMatriz2 = "";
         tamañoMatriz = "35x35";
-        codSinEspacios = "";
+        tramaBin = "";
         codificacion = "";
 
     }
@@ -88,13 +88,13 @@ public class CodificacionDPCM {
                     bin2 = "0 " + bin2 + "\n";
                 }
                 codificacion = getCodificacion() + bin2;
-                codSinEspacios = getCodSinEspacios() + bin;
+                tramaBin = getTramaBin() + bin;
 
             }
         }
         //System.out.println("codificacion " + "\n " + getCodificacion());
         codificacion = codificacion.substring(2, codificacion.length());
-        codSinEspacios = codSinEspacios.substring(1, codSinEspacios.length());
+        tramaBin = tramaBin.substring(1, tramaBin.length());
     }
 
     public void insertarMatriz(String fila) {
@@ -215,10 +215,10 @@ public class CodificacionDPCM {
     }
 
     /**
-     * @return the codSinEspacios
+     * @return the tramaBin
      */
-    public String getCodSinEspacios() {
-        return codSinEspacios;
+    public String getTramaBin() {
+        return tramaBin;
     }
 
     /**

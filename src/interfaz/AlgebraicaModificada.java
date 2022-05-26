@@ -11,7 +11,11 @@ import codificacionfuente.*;
  * @author super
  */
 public class AlgebraicaModificada extends javax.swing.JFrame {
+String tramaBin="";
 
+    public String getTramaBin(){
+        return tramaBin;
+    }
     /**
      * Creates new form AlgebraicaModificada
      */
@@ -142,8 +146,9 @@ public class AlgebraicaModificada extends javax.swing.JFrame {
         a.setMensaje(Mensaje.getText());
         a.iniciar();
         NumDec.setText("Numero en decimal del ultimo corte: " + a.getMensajeDecimalUltimoCorte());
-        NumBin.setText("Numero en binario del ultimo corte: " + a.getMensajeBin());
+        NumBin.setText("Numero en binario del ultimo corte: " + a.getTramaBin());
         Base.setText("Estamos en Base: " + a.getBase());
+        tramaBin=a.getTramaBin();
     }//GEN-LAST:event_CalcularActionPerformed
 
     private void CalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CalcularMouseClicked

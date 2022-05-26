@@ -3,13 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package interfaz;
+
 import codificacionfuente.CodificacionFuente;
 import codificacionfuente.CodificacionHuffman;
+
 /**
  *
  * @author diego
  */
 public class Huff extends javax.swing.JFrame {
+
+    String tramaBin="";
+
+    public String getTramaBin(){
+        return tramaBin;
+    }
 
     /**
      * Creates new form Huff
@@ -35,8 +43,6 @@ public class Huff extends javax.swing.JFrame {
         txtcaracteres = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         txtcadena = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -154,16 +160,16 @@ public class Huff extends javax.swing.JFrame {
     }//GEN-LAST:event_IngresohActionPerformed
 
     private void convertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertirActionPerformed
-       CodificacionHuffman hf = new CodificacionHuffman(Ingresoh.getText());
-       hf.Iniciar();
-       txtcaracteres.setText(hf.getHuff());
+        CodificacionHuffman hf = new CodificacionHuffman(Ingresoh.getText());
+        hf.Iniciar();
+        txtcaracteres.setText(hf.getHuff());
+        tramaBin=hf.getTramaBin();
     }//GEN-LAST:event_convertirActionPerformed
 
     private void IngresohKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IngresohKeyTyped
-      if(Ingresoh.getText().length()>= 20){
-           evt.consume();
-}
-
+        if (Ingresoh.getText().length() >= 50) {
+            evt.consume();
+        }
     }//GEN-LAST:event_IngresohKeyTyped
 
     /**
@@ -197,7 +203,7 @@ public class Huff extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Huff().setVisible(true);
-            
+
             }
         });
     }

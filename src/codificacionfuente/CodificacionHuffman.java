@@ -14,33 +14,20 @@ public class CodificacionHuffman {
 
     static String name;
     static int Espacio;
-
     static int Orden;
+    private String Huff = "";
+    private String tramaBin="";
 
-
-private String Huff="";
-
-
-
-
-
-
-
-public void setHuff(String Huff) {
+    public void setHuff(String Huff) {
         this.Huff = Huff;
     }
+
     /**
      * @return the Huff
      */
     public String getHuff() {
         return Huff;
     }
-
-
-
-
-
-
 
     public CodificacionHuffman(String IngreseString, String IngreseEspacio, String IngreseOrden) {
         name = IngreseString;
@@ -58,19 +45,15 @@ public void setHuff(String Huff) {
             Espacio = 1;
         }
         Orden = 0;
-
     }
 
     public CodificacionHuffman(String IngreseString) {
         name = IngreseString;
-
         Espacio = 0;
-
         Orden = 0;
-
     }
 
-   public void Iniciar() {
+    public void Iniciar() {
         int Memoria = 0;
 
         int nameLenght = name.length(); // length of the string used for the loop
@@ -121,13 +104,13 @@ public void setHuff(String Huff) {
 //empieza el arbol
                 //System.out.println(VectorArbol0 + "\n" + VectorArbol1);
                 ConstruccionDelArbol.setVectorArbol(VectorArbol0, VectorArbol1);
-                System.out.println("Codificacion Huffman \n" + ConstruccionDelArbol.getVectorArbol0()+"\n"+ConstruccionDelArbol.getVectorACambiar1());
-
+                System.out.println("Codificacion Huffman \n" + ConstruccionDelArbol.getVectorArbol0() + "\n" + ConstruccionDelArbol.getVectorACambiar1());
 
                 for (int i = 0; i < ConstruccionDelArbol.getVectorACambiar1().size(); i++) {
                     setHuff(getHuff() + Character.toString((char) ConstruccionDelArbol.getVectorArbol0().elementAt(i).intValue()) + "=  ");
                     setHuff(getHuff() + ConstruccionDelArbol.getVectorACambiar1().elementAt(i).toString());
                     setHuff(getHuff() + "   ");
+                    setTramaBin(getTramaBin() + ConstruccionDelArbol.getVectorACambiar1().elementAt(i).toString());
                 }
                 System.out.println(getHuff());
                 break;
@@ -158,6 +141,7 @@ public void setHuff(String Huff) {
                     setHuff(getHuff() + Character.toString((char) ConstruccionDelArbol.getVectorArbol0().elementAt(i).intValue()) + "= ");
                     setHuff(getHuff() + ConstruccionDelArbol.getVectorACambiar1().elementAt(i).toString());
                     setHuff(getHuff() + "   ");
+                    setTramaBin(getTramaBin() + ConstruccionDelArbol.getVectorACambiar1().elementAt(i).toString());
                 }
                 System.out.println(getHuff());
 
@@ -166,8 +150,20 @@ public void setHuff(String Huff) {
             default:
                 System.out.println("ingrese un orden correcto");
         }
+//       System.out.println("\n \n \n getTramaBin "+getTramaBin());
     }
 
+    /**
+     * @return the tramaBin
+     */
+    public String getTramaBin() {
+        return tramaBin;
+    }
 
-    
+    /**
+     * @param tramaBin the tramaBin to set
+     */
+    public void setTramaBin(String tramaBin) {
+        this.tramaBin = tramaBin;
+    }
 }

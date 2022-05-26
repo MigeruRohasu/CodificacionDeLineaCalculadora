@@ -18,6 +18,12 @@ public class DPCM extends javax.swing.JFrame {
     CodificacionDPCM a = new CodificacionDPCM();
     CodificacionRLE b = new CodificacionRLE();
 
+String tramaBin="";
+
+    public String getTramaBin(){
+        return tramaBin;
+    }
+
     /**
      * Creates new form RLE
      */
@@ -82,8 +88,6 @@ public class DPCM extends javax.swing.JFrame {
             jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));
 
@@ -321,7 +325,7 @@ if ( DPCM.isSelected() == false && DPCM_RLE.isSelected() == false) {
             error.setText("");
             if (Insert.isSelected()) {
 
-System.out.println("entre lamparaaaaaaaaaaaaaaa");System.out.println("entre lamparaaaaaaaaaaaaaaa");
+//System.out.println("entre lamparaaaaaaaaaaaaaaa");System.out.println("entre lamparaaaaaaaaaaaaaaa");
                 a.setTamañoMatriz(Tamaño.getText());
                 a.insertarMatriz(matriz);
                 Mati.setText(a.getMostrarMatriz());
@@ -332,19 +336,19 @@ System.out.println("entre lamparaaaaaaaaaaaaaaa");System.out.println("entre lamp
                 codi1.setText(a.getCodificacion());
                 Mati.setText(a.getMostrarMatriz()+"\n ---------------------------------------------------------------------------------------------------------------------- \n" + a.getMostrarMatriz2());
                 //tasa.setText("Tasa de comprecion de bit: " + a.getTasaDeComprecionHorizontal());
+                tramaBin=a.getTramaBin();
             } else if (DPCM_RLE.isSelected()) {
-                b.IniciarV3(a.getCodSinEspacios());
+                b.IniciarV3(a.getTramaBin());
                 codi1.setText(b.getMostrarcodificacionHorizontal());
                 Mati.setText(a.getMostrarMatriz()+"\n\n Matriz Segundaria \n ---------------------------------------------------------------------------------------------------------------------- \n" + a.getMostrarMatriz2());
-//
-                //tasa.setText("Tasa de comprecion de bit: " + a.getTasaDeComprecionVertical());
+                tramaBin=a.getTramaBin();
             }
 
             String mayor="";
-            if (a.getCodSinEspacios().length()<b.getCodificacionHorizontal().length()) {
+            if (a.getTramaBin().length()<b.getCodificacionHorizontal().length()) {
                 mayor = "DPCM";
             }
-            if (a.getCodSinEspacios().length()>b.getCodificacionHorizontal().length()) {
+            if (a.getTramaBin().length()>b.getCodificacionHorizontal().length()) {
                 mayor = "DPCM + RLE";
             }
             reco.setText("Recomendacion: " + mayor);
