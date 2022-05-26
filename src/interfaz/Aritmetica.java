@@ -25,6 +25,7 @@ String tramaBin="";
      */
     public Aritmetica() {
         initComponents();
+super.setTitle("Aritmetica");
     }
 
     /**

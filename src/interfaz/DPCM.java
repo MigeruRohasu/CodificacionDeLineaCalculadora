@@ -29,6 +29,7 @@ String tramaBin="";
      */
     public DPCM() {
         initComponents();
+        super.setTitle("DPCM");
     }
 
     /**

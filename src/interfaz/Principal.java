@@ -15,6 +15,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+super.setTitle("Codificacion de Linea/Fuente/Canal");
     }
 
     /**

@@ -21,6 +21,7 @@ public class Sha extends javax.swing.JFrame {
      */
     public Sha() {
         initComponents();
+        super.setTitle("Shannon Fano");
     }
  
     /**

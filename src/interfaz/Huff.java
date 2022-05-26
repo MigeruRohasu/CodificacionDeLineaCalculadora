@@ -24,6 +24,7 @@ public class Huff extends javax.swing.JFrame {
      */
     public Huff() {
         initComponents();
+super.setTitle("Huffman");
     }
 
     /**

@@ -19,6 +19,7 @@ public class Hamming extends javax.swing.JFrame {
      */
     public Hamming() {
         initComponents();
+super.setTitle("Hamming");
     }
 
     /**

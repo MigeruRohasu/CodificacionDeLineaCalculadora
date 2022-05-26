@@ -27,6 +27,7 @@ public class RLE_V2 extends javax.swing.JFrame {
      */
     public RLE_V2() {
         initComponents();
+super.setTitle("RLE Tecnicas");
     }
 
     /**

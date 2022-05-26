@@ -27,6 +27,7 @@ public class RLE extends javax.swing.JFrame {
      */
     public RLE() {
         initComponents();
+super.setTitle("RLE");
     }
 
     /**
