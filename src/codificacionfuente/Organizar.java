@@ -8,87 +8,124 @@ import java.util.*;
 
 public class Organizar {
 
-    private Vector<Integer> VectorACambiar0 = new Vector<Integer>();
-    private Vector<Integer> VectorACambiar1 = new Vector<Integer>();
+    private Vector<Integer> VectorACambiarLetras = new Vector<Integer>();
+    private Vector<Integer> VectorACambiarCuenta = new Vector<Integer>();
+    private ArrayList<Vector<String>> VectorACambiarCodificacion = new ArrayList<Vector<String>>();
     private ArrayList<Vector<Integer>> VectorACambiar2 = new ArrayList<Vector<Integer>>();
 
     private int cuantoMuevo;
 
-    public void setVectorCambio(Vector<Integer> IngresoNumeros, Vector<Integer> IngresoLetras) {
-
+    public void mayorAMenor(Vector<Integer> IngresoCuenta, Vector<Integer> IngresoLetras) {
+        //System.out.println("--------------------------------------------------------------------------------------------");
         int Memoria = 0;
-        VectorACambiar1.clear();
-        VectorACambiar0.clear();
-        VectorACambiar1.addAll(IngresoNumeros);
-        VectorACambiar0.addAll(IngresoLetras);
+        VectorACambiarCuenta.clear();
+        VectorACambiarLetras.clear();
+        VectorACambiarCuenta.addAll(IngresoCuenta);
+        VectorACambiarLetras.addAll(IngresoLetras);
         System.out.println();
-        System.out.println("Lo que entra a Organizar es " + "\n" + VectorACambiar0 + "\n" + VectorACambiar1);
+        System.out.println("Lo que entra a Organizar es " + "\n" + VectorACambiarLetras + "\n" + VectorACambiarCuenta);
 
-        for (int a = 0; a < VectorACambiar0.size(); a++) {
-            for (int b = a; b < VectorACambiar0.size(); b++) {
-
-                if (VectorACambiar0.elementAt(a) < VectorACambiar0.elementAt(b)) {
-
-                    for (int i = a; i < b; i++) {
-                        Memoria = VectorACambiar0.elementAt(i);
-                        VectorACambiar0.setElementAt(VectorACambiar0.elementAt(i + 1), i);
-                        VectorACambiar0.setElementAt(Memoria, i + 1);
-
-                        Memoria = VectorACambiar1.elementAt(i);
-                        VectorACambiar1.setElementAt(VectorACambiar1.elementAt(i + 1), i);
-                        VectorACambiar1.setElementAt(Memoria, i + 1);
+        for (int a = 0; a < VectorACambiarCuenta.size(); a++) {
+            for (int b = a; b < VectorACambiarCuenta.size(); b++) {
+                //System.out.println("if (VectorACambiarCuenta.elementAt(a) < VectorACambiarCuenta.elementAt(b))   \n"+a+"  <  "+b);
+                if (VectorACambiarCuenta.elementAt(a) < VectorACambiarCuenta.elementAt(b)) {
+                    for (int i = b; i > a; i--) {
+                        
+                        Memoria = VectorACambiarLetras.elementAt(i);
+                        VectorACambiarLetras.setElementAt(VectorACambiarLetras.elementAt(i - 1), i);
+                        VectorACambiarLetras.setElementAt(Memoria, i - 1);
+                        
+                        //System.out.println("("+i+" <-- "+(i-1)+")");
+                        Memoria = VectorACambiarCuenta.elementAt(i);
+                        VectorACambiarCuenta.setElementAt(VectorACambiarCuenta.elementAt(i - 1), i);
+                        VectorACambiarCuenta.setElementAt(Memoria, i - 1);
                     }
                     b = a;
                 }
+                //System.out.println(VectorACambiarCuenta);
             }
         }
 
-        System.out.println("y asi quedo " + "\n" + VectorACambiar0 + "\n" + VectorACambiar1);
+        System.out.println("y asi quedo " + "\n" + VectorACambiarLetras + "\n" + VectorACambiarCuenta);
         System.out.println();
         System.out.println();
+
+        //System.out.println("--------------------------------------------------------------------------------------------");
     }
 
 
 
-    public void setVectorCambioArbol(ArrayList<Vector<Integer>> IngresoLetras,Vector<Integer> IngresoNumeros ) {
+    public void setVectorCambioArbol(ArrayList<Vector<Integer>> IngresoLetras,Vector<Integer> IngresoNumeros ,ArrayList<Vector<String>> IngresoCodificacion) {
 
         int Memoria = 0;
-        VectorACambiar1.clear();
+        String Memoria1="";
+        VectorACambiarCuenta.clear();
         VectorACambiar2.clear();
-        VectorACambiar1.addAll(IngresoNumeros);
+        getVectorACambiarCodificacion().clear();
+        VectorACambiarCuenta.addAll(IngresoNumeros);
         VectorACambiar2.addAll(IngresoLetras);
+        getVectorACambiarCodificacion().addAll(IngresoCodificacion);
         System.out.println();
-        System.out.println("Lo que entra a Organizar es " + "\n" + VectorACambiar2 + "\n" + VectorACambiar1);
+
+        System.out.println("Lo que entra a Organizar es");
+        for(int a=0;a<VectorACambiar2.size();a++){
+            System.out.print("[");
+            for(int b=0;b<VectorACambiar2.get(a).size();b++){
+                int letra=VectorACambiar2.get(a).get(b);                
+System.out.print((char)letra+",");
+            }
+            System.out.print("] ");
+        }
+        System.out.println("\n" + VectorACambiarCuenta+ "\n" +getVectorACambiarCodificacion());
         
-        for (int a = 0; a < VectorACambiar1.size(); a++) {
-            for (int b = a; b < VectorACambiar1.size(); b++) {
+        for (int a = 0; a < VectorACambiarCuenta.size(); a++) {
+            for (int b = a; b < VectorACambiarCuenta.size(); b++) {
+                //System.out.println("if (VectorACambiarCuenta.elementAt(a) < VectorACambiarCuenta.elementAt(b))   \n"+a+"  <  "+b);
+                if (VectorACambiarCuenta.elementAt(a) < VectorACambiarCuenta.elementAt(b)) {
+                    for (int i = b; i > a; i--) {
 
-                if (VectorACambiar1.elementAt(a) < VectorACambiar1.elementAt(b)) {
-
-                    for (int i = a; i < b; i++) {
-                        Memoria = VectorACambiar1.elementAt(i);
-                        VectorACambiar1.setElementAt(VectorACambiar1.elementAt(i + 1), i);
-                        VectorACambiar1.setElementAt(Memoria, i + 1);
+                        Memoria = VectorACambiarCuenta.elementAt(i);
+                        VectorACambiarCuenta.setElementAt(VectorACambiarCuenta.elementAt(i - 1), i);
+                        VectorACambiarCuenta.setElementAt(Memoria, i - 1);
 
                         Vector<Integer>Memoria2 = new Vector<Integer>();
                         Vector<Integer>Memoria3 = new Vector<Integer>();
-
-                        //System.out.println("\nlo pongo en "+(i+1)+VectorACambiar2.get(i)+"\nlo pongo en "+i +(VectorACambiar2.get(i + 1)));
+                        
                         Memoria2.addAll(VectorACambiar2.get(i));
-                        Memoria3.addAll(VectorACambiar2.get(i+1));
+                        Memoria3.addAll(VectorACambiar2.get(i-1));
                         
                         VectorACambiar2.set(i, Memoria3 );
 
-                        //System.out.println("sapoooooooooooooooooooooooooooooooooooooo  "+(i+1)+"   "+Memoria2);
-                        VectorACambiar2.set( (i + 1),Memoria2);
-                        //System.out.println("VectorACambiar2 "+VectorACambiar2);
+                        VectorACambiar2.set( (i - 1),Memoria2);
+
+
+
+
+                        Vector<String>Memoria22 = new Vector<String>();
+                        Vector<String>Memoria33 = new Vector<String>();
+
+                        Memoria22.addAll(getVectorACambiarCodificacion().get(i));
+                        Memoria33.addAll(getVectorACambiarCodificacion().get(i-1));
+                        
+                        getVectorACambiarCodificacion().set(i, Memoria33 );
+
+                        getVectorACambiarCodificacion().set( (i - 1),Memoria22);
                     }
                     b = a;
                 }
             }
         }
 
-        System.out.println("y asi quedo " + "\n" + VectorACambiar2 + "\n" + VectorACambiar1);
+        System.out.println("y asi quedo ");
+for(int a=0;a<VectorACambiar2.size();a++){
+            System.out.print("[");
+            for(int b=0;b<VectorACambiar2.get(a).size();b++){
+int letra=VectorACambiar2.get(a).get(b);                
+System.out.print((char)letra+",");
+            }
+            System.out.print("] ");
+        }
+        System.out.println("\n" + VectorACambiarCuenta+ "\n" +getVectorACambiarCodificacion());
         System.out.println();
         System.out.println();
     }
@@ -99,20 +136,20 @@ public class Organizar {
     public void setVectorCambioUnico(Vector<Integer> IngresoNumeros) {
 
         int Memoria = 0;
-        VectorACambiar0.clear();
-        VectorACambiar0.addAll(IngresoNumeros);
+        VectorACambiarLetras.clear();
+        VectorACambiarLetras.addAll(IngresoNumeros);
         System.out.println();
-        System.out.println("Lo que enta a Organizar es " + "\n" + VectorACambiar0);
+        System.out.println("Lo que enta a Organizar es " + "\n" + VectorACambiarLetras);
         cuantoMuevo = 0;
-        for (int a = 0; a < VectorACambiar0.size(); a++) {
-            for (int b = a; b < VectorACambiar0.size(); b++) {
+        for (int a = 0; a < VectorACambiarLetras.size(); a++) {
+            for (int b = a; b < VectorACambiarLetras.size(); b++) {
 
-                if (VectorACambiar0.elementAt(a) < VectorACambiar0.elementAt(b)) {
+                if (VectorACambiarLetras.elementAt(a) < VectorACambiarLetras.elementAt(b)) {
 
                     for (int i = a; i < b; i++) {
-                        Memoria = VectorACambiar0.elementAt(i);
-                        VectorACambiar0.setElementAt(VectorACambiar0.elementAt(i + 1), i);
-                        VectorACambiar0.setElementAt(Memoria, i + 1);
+                        Memoria = VectorACambiarLetras.elementAt(i);
+                        VectorACambiarLetras.setElementAt(VectorACambiarLetras.elementAt(i + 1), i);
+                        VectorACambiarLetras.setElementAt(Memoria, i + 1);
                     }
                     cuantoMuevo = cuantoMuevo + 1;
                     b = a;
@@ -120,15 +157,15 @@ public class Organizar {
                 }
             }
         }
-        System.out.println("y asi quedo " + "\n" + VectorACambiar0);
+        System.out.println("y asi quedo " + "\n" + VectorACambiarLetras);
         System.out.println();
         System.out.println();
     }
 
     public void contar(Vector<Integer> IngresoLetras) {
         int Memoria = 0;
-        VectorACambiar1.clear();
-        VectorACambiar0.clear();
+        VectorACambiarCuenta.clear();
+        VectorACambiarLetras.clear();
         System.out.println();
         System.out.println("Lo que entra a contar es " + "\n" + IngresoLetras);
         Vector<Integer> VecMemoria = new Vector<Integer>();
@@ -143,8 +180,8 @@ public class Organizar {
                     count = count + 1;
                 }
             }
-            VectorACambiar0.addElement(IngresoLetras.elementAt(0));
-            VectorACambiar1.addElement(count);
+            VectorACambiarLetras.addElement(IngresoLetras.elementAt(0));
+            VectorACambiarCuenta.addElement(count);
 
 //borrar valores de lista
             VecMemoria.clear();
@@ -163,7 +200,7 @@ public class Organizar {
                 Band1 = false;
             }
         }
-        System.out.println("Lo que sale de contar es " + "\n" + VectorACambiar0 + "\n" + VectorACambiar1);
+        System.out.println("Lo que sale de contar es " + "\n" + VectorACambiarLetras + "\n" + VectorACambiarCuenta);
     }
 
     public void quitarEspacios(Vector<Integer> IngresoLetras, int Espacio) {
@@ -176,31 +213,31 @@ public class Organizar {
                 }
             }
 
-            VectorACambiar0.clear();
-            VectorACambiar0.addAll(IngresoLetras);
+            VectorACambiarLetras.clear();
+            VectorACambiarLetras.addAll(IngresoLetras);
         } else {
-            VectorACambiar0.clear();
-            VectorACambiar0.addAll(IngresoLetras);
+            VectorACambiarLetras.clear();
+            VectorACambiarLetras.addAll(IngresoLetras);
         }
     }
 
     public void mayusculas(Vector<Integer> IngresoLetras) {
-        VectorACambiar0.clear();
+        VectorACambiarLetras.clear();
         for (int i = 0; i < IngresoLetras.size(); i++) {
             if (IngresoLetras.elementAt(i) >= 65 && IngresoLetras.elementAt(i) <= 90) {
-                VectorACambiar0.add(IngresoLetras.elementAt(i) + 32);
+                VectorACambiarLetras.add(IngresoLetras.elementAt(i) + 32);
             } else {
-                VectorACambiar0.add(IngresoLetras.elementAt(i));
+                VectorACambiarLetras.add(IngresoLetras.elementAt(i));
             }
         }
     }
 
-    public Vector<Integer> getVectorCambio0() {
-        return VectorACambiar0;
+    public Vector<Integer> getVectorCambioLetras() {
+        return VectorACambiarLetras;
     }
 
-    public Vector<Integer> getVectorCambio1() {
-        return VectorACambiar1;
+    public Vector<Integer> getVectorCambioCuenta() {
+        return VectorACambiarCuenta;
     }
 
     public ArrayList<Vector<Integer>> getVectorCambio2() {
@@ -210,4 +247,12 @@ public class Organizar {
     public int cuantoMuevo() {
         return cuantoMuevo;
     }
+
+    /**
+     * @return the VectorACambiarCodificacion
+     */
+    public ArrayList<Vector<String>> getVectorACambiarCodificacion() {
+        return VectorACambiarCodificacion;
+    }
+
 }

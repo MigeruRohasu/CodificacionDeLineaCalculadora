@@ -42,12 +42,12 @@ public class CodificacionAlgebraicaM {
         }
         organizar.contar(countMensaje);
         L = mensajeArray.size();
-        base = organizar.getVectorCambio0().size();
+        base = organizar.getVectorCambioLetras().size();
         mensajeDecimal = "0.";
 
         for (int i = 0; i < mensajeArray.size(); i++) {
-            for (int j = 0; j < organizar.getVectorCambio0().size(); j++) {
-                if (mensajeArray.get(i).elementAt(0) == organizar.getVectorCambio0().elementAt(j)) {
+            for (int j = 0; j < organizar.getVectorCambioLetras().size(); j++) {
+                if (mensajeArray.get(i).elementAt(0) == organizar.getVectorCambioLetras().elementAt(j)) {
                     mensajeArray.get(i).add(j);
                     mensajeDecimal = mensajeDecimal + j;
                 }

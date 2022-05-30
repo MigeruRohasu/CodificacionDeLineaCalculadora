@@ -69,12 +69,12 @@ public class CodificaionShannonFano {
 //Quitar Espacio
         Organizar.quitarEspacios(VectorAscii, Espacio);
         VectorAscii.clear();
-        VectorAscii.addAll(Organizar.getVectorCambio0());
+        VectorAscii.addAll(Organizar.getVectorCambioLetras());
         OrdenFila OrdenFila = new OrdenFila();
 
         Organizar.mayusculas(VectorAscii);
         VectorAscii.clear();
-        VectorAscii.addAll(Organizar.getVectorCambio0());
+        VectorAscii.addAll(Organizar.getVectorCambioLetras());
 
         switch (Orden) {
             case 0:
@@ -82,15 +82,15 @@ public class CodificaionShannonFano {
                 Organizar.contar(VectorAscii);
                 VectorArbol0.clear();
                 VectorArbol1.clear();
-                VectorArbol0.addAll(Organizar.getVectorCambio0());
-                VectorArbol1.addAll(Organizar.getVectorCambio1());
+                VectorArbol0.addAll(Organizar.getVectorCambioLetras());
+                VectorArbol1.addAll(Organizar.getVectorCambioCuenta());
 
 //Ordena el vector
-                Organizar.setVectorCambio(VectorArbol0, VectorArbol1);
+                Organizar.mayorAMenor(VectorArbol0, VectorArbol1);
                 VectorArbol0.clear();
                 VectorArbol1.clear();
-                VectorArbol0.addAll(Organizar.getVectorCambio1());
-                VectorArbol1.addAll(Organizar.getVectorCambio0());
+                VectorArbol0.addAll(Organizar.getVectorCambioCuenta());
+                VectorArbol1.addAll(Organizar.getVectorCambioLetras());
                 System.out.println("entra a  fila " + VectorArbol0 + "\n" + VectorArbol1);
 
 //Ordena la fila
@@ -112,20 +112,20 @@ public class CodificaionShannonFano {
 //cuenta el Ascci
                 Organizar.setVectorCambioUnico(VectorAscii);
                 VectorAscii.clear();
-                VectorAscii.addAll(Organizar.getVectorCambio0());
+                VectorAscii.addAll(Organizar.getVectorCambioLetras());
 
                 Organizar.contar(VectorAscii);
                 VectorArbol0.clear();
                 VectorArbol1.clear();
-                VectorArbol0.addAll(Organizar.getVectorCambio0());
-                VectorArbol1.addAll(Organizar.getVectorCambio1());
+                VectorArbol0.addAll(Organizar.getVectorCambioLetras());
+                VectorArbol1.addAll(Organizar.getVectorCambioCuenta());
 
 //Ordena el vector
-                Organizar.setVectorCambio(VectorArbol0, VectorArbol1);
+                Organizar.mayorAMenor(VectorArbol0, VectorArbol1);
                 VectorArbol0.clear();
                 VectorArbol1.clear();
-                VectorArbol0.addAll(Organizar.getVectorCambio1());
-                VectorArbol1.addAll(Organizar.getVectorCambio0());
+                VectorArbol0.addAll(Organizar.getVectorCambioCuenta());
+                VectorArbol1.addAll(Organizar.getVectorCambioLetras());
                 System.out.println("entra a  fila " + VectorArbol0 + "\n" + VectorArbol1);
 
 //Ordena la fila

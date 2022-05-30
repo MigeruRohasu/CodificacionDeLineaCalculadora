@@ -16,7 +16,7 @@ public class CodificacionHuffman {
     static int Espacio;
     static int Orden;
     private String Huff = "";
-    private String tramaBin="";
+    private String tramaBin = "";
 
     public void setHuff(String Huff) {
         this.Huff = Huff;
@@ -60,8 +60,8 @@ public class CodificacionHuffman {
         Vector<Integer> VectorAscii = new Vector<Integer>(nameLenght);
         Vector VectorLetras = new Vector(nameLenght);
 
-        Vector<Integer> VectorArbol0 = new Vector<Integer>();
-        Vector<Integer> VectorArbol1 = new Vector<Integer>();
+        Vector<Integer> VectorArbolLetra = new Vector<Integer>();
+        Vector<Integer> VectorArbolCuenta = new Vector<Integer>();
 
         Vector<Integer> VectorMemoria0 = new Vector<Integer>();
         Vector<Integer> VectorMemoria1 = new Vector<Integer>();
@@ -79,78 +79,41 @@ public class CodificacionHuffman {
 
         Organizar.mayusculas(VectorAscii);
         VectorAscii.clear();
-        VectorAscii.addAll(Organizar.getVectorCambio0());
+        VectorAscii.addAll(Organizar.getVectorCambioLetras());
 
         Organizar.quitarEspacios(VectorAscii, Espacio);
         VectorAscii.clear();
-        VectorAscii.addAll(Organizar.getVectorCambio0());
+        VectorAscii.addAll(Organizar.getVectorCambioLetras());
 
-        switch (Orden) {
-            case 0:
+        
                 Organizar.contar(VectorAscii);
-                VectorArbol0.clear();
-                VectorArbol1.clear();
-                VectorArbol0.addAll(Organizar.getVectorCambio0());
-                VectorArbol1.addAll(Organizar.getVectorCambio1());
-
+                VectorArbolLetra.clear();
+                VectorArbolCuenta.clear();
+                VectorArbolLetra.addAll(Organizar.getVectorCambioLetras());
+                VectorArbolCuenta.addAll(Organizar.getVectorCambioCuenta());
+                
 //Ordena el vector
-                Organizar.setVectorCambio(VectorArbol0, VectorArbol1);
+                Organizar.mayorAMenor(VectorArbolCuenta, VectorArbolLetra);
 
-                VectorArbol0.clear();
-                VectorArbol1.clear();
-                VectorArbol0.addAll(Organizar.getVectorCambio1());
-                VectorArbol1.addAll(Organizar.getVectorCambio0());
+                VectorArbolLetra.clear();
+                VectorArbolCuenta.clear();
+                VectorArbolLetra.addAll(Organizar.getVectorCambioLetras());
+                VectorArbolCuenta.addAll(Organizar.getVectorCambioCuenta());
 
 //empieza el arbol
-                //System.out.println(VectorArbol0 + "\n" + VectorArbol1);
-                ConstruccionDelArbol.setVectorArbol(VectorArbol0, VectorArbol1);
-                System.out.println("Codificacion Huffman \n" + ConstruccionDelArbol.getVectorArbol0() + "\n" + ConstruccionDelArbol.getVectorACambiar1());
+                //System.out.println(VectorArbolLetra + "\n" + VectorArbolCuenta);
+                ConstruccionDelArbol.setVectorArbol(VectorArbolLetra, VectorArbolCuenta);
 
-                for (int i = 0; i < ConstruccionDelArbol.getVectorACambiar1().size(); i++) {
-                    setHuff(getHuff() + Character.toString((char) ConstruccionDelArbol.getVectorArbol0().elementAt(i).intValue()) + "=  ");
-                    setHuff(getHuff() + ConstruccionDelArbol.getVectorACambiar1().elementAt(i).toString());
+                System.out.println("Codificacion Huffman \n" + ConstruccionDelArbol.getVectorArbolLetras() + "\n" + ConstruccionDelArbol.getVectorACambiar1());
+
+                for (int i = 0; i < ConstruccionDelArbol.getVectorACambiar1().get(0).size(); i++) {
+                    setHuff(getHuff() + Character.toString((char) ConstruccionDelArbol.getVectorArbolLetras().elementAt(i).intValue()) + "=  ");
+                    setHuff(getHuff() + ConstruccionDelArbol.getVectorACambiar1().get(0).get(i));
                     setHuff(getHuff() + "   ");
-                    setTramaBin(getTramaBin() + ConstruccionDelArbol.getVectorACambiar1().elementAt(i).toString());
+                    setTramaBin(getTramaBin() + ConstruccionDelArbol.getVectorACambiar1().get(0).get(i));
                 }
                 System.out.println(getHuff());
-                break;
-
-            case 1:
-
-                Organizar.contar(VectorAscii);
-                VectorArbol0.clear();
-                VectorArbol1.clear();
-                VectorArbol0.addAll(Organizar.getVectorCambio0());
-                VectorArbol1.addAll(Organizar.getVectorCambio1());
-
-//Ordena el vector
-                Organizar.setVectorCambio(VectorArbol0, VectorArbol1);
-
-                VectorArbol0.clear();
-                VectorArbol1.clear();
-                VectorArbol0.addAll(Organizar.getVectorCambio1());
-                VectorArbol1.addAll(Organizar.getVectorCambio0());
-
-//empieza el arbol
-                //System.out.println("estoy aqui");
-                //System.out.println(VectorArbol0 + "\n" + VectorArbol1);
-                ConstruccionDelArbol.setVectorArbol(VectorArbol0, VectorArbol1);
-                System.out.println("Codificacion Huffman \n" + ConstruccionDelArbol.getVectorACambiar1());
-
-                for (int i = 0; i < ConstruccionDelArbol.getVectorACambiar1().size(); i++) {
-                    setHuff(getHuff() + Character.toString((char) ConstruccionDelArbol.getVectorArbol0().elementAt(i).intValue()) + "= ");
-                    setHuff(getHuff() + ConstruccionDelArbol.getVectorACambiar1().elementAt(i).toString());
-                    setHuff(getHuff() + "   ");
-                    setTramaBin(getTramaBin() + ConstruccionDelArbol.getVectorACambiar1().elementAt(i).toString());
-                }
-                System.out.println(getHuff());
-
-                break;
-
-            default:
-                System.out.println("ingrese un orden correcto");
-        }
-//       System.out.println("\n \n \n getTramaBin "+getTramaBin());
+                   System.out.println("\n \n \n getTramaBin "+getTramaBin());
     }
 
     /**

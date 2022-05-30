@@ -169,9 +169,9 @@ public class CodificacionAritmetica {
         System.out.println("");
         double ascii;
         double prob;
-        for (int i = 0; i < Organizar.getVectorCambio0().size(); i++) {
-            ascii = (double) Organizar.getVectorCambio0().elementAt(i);
-            prob = (double) Organizar.getVectorCambio1().elementAt(i);
+        for (int i = 0; i < Organizar.getVectorCambioLetras().size(); i++) {
+            ascii = (double) Organizar.getVectorCambioLetras().elementAt(i);
+            prob = (double) Organizar.getVectorCambioCuenta().elementAt(i);
             prob = prob / nameLenght;
             addProbabilidad(ascii, prob);
         }
