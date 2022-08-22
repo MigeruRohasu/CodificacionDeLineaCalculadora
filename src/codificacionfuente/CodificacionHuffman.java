@@ -110,10 +110,17 @@ public class CodificacionHuffman {
                     setHuff(getHuff() + Character.toString((char) ConstruccionDelArbol.getVectorArbolLetras().elementAt(i).intValue()) + "=  ");
                     setHuff(getHuff() + ConstruccionDelArbol.getVectorACambiar1().get(0).get(i));
                     setHuff(getHuff() + "   ");
-                    setTramaBin(getTramaBin() + ConstruccionDelArbol.getVectorACambiar1().get(0).get(i));
+                    //setTramaBin(getTramaBin() + ConstruccionDelArbol.getVectorACambiar1().get(0).get(i));
                 }
                 System.out.println(getHuff());
-                   System.out.println("\n \n \n getTramaBin "+getTramaBin());
+                for (int a = 0; a < name.length(); a++) {
+                    for (int b = 0; b < ConstruccionDelArbol.getVectorArbolLetras().size(); b++) {
+                        if (name.charAt(a)==(char) ConstruccionDelArbol.getVectorArbolLetras().elementAt(b).intValue()) {
+                            setTramaBin(getTramaBin() + ConstruccionDelArbol.getVectorACambiar1().get(0).get(b));
+                        }
+                    }
+                }
+                System.out.println("\n \n \n getTramaBin "+getTramaBin());
     }
 
     /**

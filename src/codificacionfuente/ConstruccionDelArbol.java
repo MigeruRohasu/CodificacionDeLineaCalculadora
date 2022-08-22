@@ -38,14 +38,6 @@ public class ConstruccionDelArbol {
 
         while (VectorArbolCuenta.size() > 1) {
             int index = 0;
-//            for (int i = 0; i < Base.get(Base.size() - 1).size(); i++) {
-//                index = IngresoLetras.indexOf(Base.get(Base.size() - 1).elementAt(i));
-//                VectorACambiar1.set(index, "0" + VectorACambiar1.get(index));
-//            }
-//            for (int i = 0; i < Base.get(Base.size() - 2).size(); i++) {
-//                index = IngresoLetras.indexOf(Base.get(Base.size() - 2).elementAt(i));
-//                VectorACambiar1.set(index, "1" + VectorACambiar1.get(index));
-//            }
 
             for(int i=0;i<VectorACambiar1.get(VectorACambiar1.size()-1).size();i++){
                 VectorACambiar1.get(VectorACambiar1.size()-1).set(i,"1"+VectorACambiar1.get(VectorACambiar1.size()-1).get(i));
